@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Critique+ — Build Better Habits, Every Day</title>
+    <title>Strive - Build Better Habits, Every Day</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,7 +31,7 @@
             line-height: 1.6;
         }
         
-        /* ─── Nav ─── */
+        /* Nav */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 50;
             padding: 16px 48px;
@@ -44,7 +44,7 @@
         .nav-brand span { 
             width: 32px; height: 32px; border-radius: 10px; 
             background: linear-gradient(135deg, var(--purple), var(--green));
-            display: flex; align-items: center; justify-content: center; font-size: 16px;
+            display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff;
         }
         .nav-links { display: flex; gap: 28px; align-items: center; }
         .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
@@ -61,8 +61,11 @@
         .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
         .btn-outline:hover { border-color: var(--purple); }
         .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 14px; }
+        .btn-download { background: var(--green); color: var(--bg); font-weight: 700; }
+        .btn-download:hover { background: #00B5B0; }
+        .btn-download-sm { background: var(--green); color: var(--bg); font-weight: 700; padding: 8px 18px; font-size: 13px; }
 
-        /* ─── Hero ─── */
+        /* Hero */
         .hero {
             min-height: 100vh; display: flex; align-items: center;
             padding: 120px 48px 80px; position: relative; overflow: hidden;
@@ -87,10 +90,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-text p { color: var(--muted); font-size: 17px; max-width: 480px; margin-bottom: 36px; }
-        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero-stats { display: flex; gap: 40px; }
-        .hero-stat-num { font-size: 28px; font-weight: 800; color: var(--text); }
-        .hero-stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
         /* Phone */
         .hero-phone { display: flex; justify-content: center; position: relative; }
@@ -131,7 +131,6 @@
             border-radius: 12px; font-size: 11px; font-weight: 600; color: var(--orange);
         }
 
-        /* Floating badges */
         .float {
             position: absolute; background: var(--card); border: 1px solid var(--border);
             border-radius: 14px; padding: 10px 14px; display: flex; align-items: center;
@@ -140,12 +139,15 @@
         }
         .float-1 { top: 80px; right: -30px; }
         .float-2 { bottom: 100px; left: -40px; animation-delay: 1.5s; }
-        .float .f-emoji { font-size: 20px; }
+        .float .f-icon {
+            width: 28px; height: 28px; border-radius: 8px; display: flex;
+            align-items: center; justify-content: center; font-size: 13px; font-weight: 800;
+        }
         .float .f-title { font-weight: 600; }
         .float .f-sub { color: var(--muted); font-size: 10px; }
         @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* ─── Section utility ─── */
+        /* Sections */
         section { position: relative; z-index: 1; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
         .section-tag {
@@ -156,22 +158,7 @@
         .section-title { font-size: 36px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 16px; }
         .section-desc { color: var(--muted); font-size: 16px; max-width: 560px; }
 
-        /* ─── Stats bar ─── */
-        .stats-bar {
-            padding: 48px 0; border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center;
-        }
-        .stat-num {
-            font-size: 40px; font-weight: 800; letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--purple), var(--green));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .stat-lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
-
-        /* ─── What you get ─── */
+        /* Features */
         .features { padding: 100px 0; }
         .feat-header { text-align: center; margin-bottom: 60px; }
         .feat-header .section-desc { margin: 0 auto; }
@@ -205,7 +192,6 @@
             justify-content: center; font-size: 12px; margin-top: 1px;
         }
 
-        /* Screenshot mockup inside feat-visual */
         .mock-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
         .mock-tab {
             padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 600;
@@ -227,13 +213,6 @@
         .mock-text-sub { font-size: 10px; color: var(--muted); }
         .mock-tag {
             font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px;
-        }
-        
-        .mock-chart {
-            display: flex; align-items: flex-end; gap: 8px; height: 120px; padding-top: 12px;
-        }
-        .mock-bar {
-            flex: 1; border-radius: 6px 6px 0 0; transition: height .6s ease;
         }
         
         .mock-journal {
@@ -258,29 +237,8 @@
         .mock-slider-track { width: 100%; height: 4px; background: var(--border); border-radius: 2px; position: relative; }
         .mock-slider-fill { height: 100%; border-radius: 2px; position: absolute; left: 0; top: 0; }
 
-        /* ─── Testimonials ─── */
-        .testimonials { padding: 80px 0; }
-        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-        .test-card {
-            background: var(--card); border-radius: 16px; padding: 24px;
-            border: 1px solid var(--border); transition: border-color .2s;
-        }
-        .test-card:hover { border-color: var(--purple); }
-        .test-stars { color: var(--orange); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
-        .test-text { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-        .test-author { display: flex; align-items: center; gap: 10px; }
-        .test-avatar {
-            width: 36px; height: 36px; border-radius: 10px; display: flex;
-            align-items: center; justify-content: center; font-size: 16px;
-            background: rgba(108,92,231,0.15);
-        }
-        .test-name { font-size: 13px; font-weight: 600; }
-        .test-role { font-size: 11px; color: var(--muted); }
-
-        /* ─── CTA ─── */
-        .cta {
-            padding: 100px 0;
-        }
+        /* CTA */
+        .cta { padding: 100px 0; }
         .cta-box {
             background: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(0,206,201,0.08));
             border: 1px solid rgba(108,92,231,0.2);
@@ -289,10 +247,8 @@
         .cta-box h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
         .cta-box p { color: var(--muted); margin-bottom: 32px; font-size: 16px; }
         .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .btn-green { background: var(--green); color: var(--bg); }
-        .btn-green:hover { background: #00B5B0; }
 
-        /* ─── Footer ─── */
+        /* Footer */
         footer {
             padding: 40px 0; border-top: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: center;
@@ -301,13 +257,11 @@
         footer a { color: var(--muted); text-decoration: none; }
         footer a:hover { color: var(--text); }
 
-        /* ─── Responsive ─── */
+        /* Responsive */
         @media (max-width: 900px) {
             .hero-inner, .feat-row { grid-template-columns: 1fr; }
             .hero-text h1 { font-size: 36px; }
             .hero-phone { display: none; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .test-grid { grid-template-columns: 1fr; }
             .feat-row.reverse { direction: ltr; }
             nav { padding: 14px 20px; }
             .nav-links a:not(.btn) { display: none; }
@@ -319,37 +273,31 @@
 <body>
 
 <nav>
-    <div class="nav-brand"><span>✨</span> Critique+</div>
+    <div class="nav-brand"><span>S</span> Strive</div>
     <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="#testimonials">Reviews</a>
         <a href="web/" class="btn btn-outline" style="padding:8px 18px;font-size:13px;">Live Demo</a>
-        <a href="download/CritiquePlus.apk" download class="btn btn-primary" style="padding:8px 18px;font-size:13px;">Download APK</a>
+        <a href="download/Strive.apk" download class="btn btn-download-sm">Download APK</a>
     </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
             <h1>Stop scrolling.<br>Start <em>building.</em></h1>
-            <p>Critique+ tracks your habits, manages your tasks, and gives you AI-powered feedback — so you actually follow through on your goals.</p>
+            <p>Strive tracks your habits, manages your tasks, and gives you AI-powered feedback so you actually follow through on your goals.</p>
             <div class="hero-btns">
-                <a href="download/CritiquePlus.apk" download class="btn btn-primary btn-lg">📱 Download for Android</a>
-                <a href="web/" class="btn btn-outline btn-lg">▶ Try in Browser</a>
-            </div>
-            <div class="hero-stats">
-                <div><div class="hero-stat-num">4.8</div><div class="hero-stat-label">App Rating</div></div>
-                <div><div class="hero-stat-num">15+</div><div class="hero-stat-label">Features</div></div>
-                <div><div class="hero-stat-num">100%</div><div class="hero-stat-label">Free</div></div>
+                <a href="download/Strive.apk" download class="btn btn-download btn-lg">Download for Android</a>
+                <a href="web/" class="btn btn-outline btn-lg">Try in Browser</a>
             </div>
         </div>
         <div class="hero-phone">
             <div class="phone">
                 <div class="phone-notch"></div>
                 <div class="phone-body">
-                    <div class="ph-greeting">Good Morning 👋</div>
-                    <div class="ph-name">Alex — Level 12</div>
+                    <div class="ph-greeting">Good Morning</div>
+                    <div class="ph-name">Alex - Level 12</div>
                     <div class="ph-card">
                         <div class="ph-row">
                             <span class="ph-label">Today's Progress</span>
@@ -358,44 +306,32 @@
                         <div class="ph-bar"><div class="ph-bar-fill"></div></div>
                     </div>
                     <div class="ph-grid">
-                        <div class="ph-mini"><div class="ph-mini-e">✅</div><div class="ph-mini-v" style="color:var(--green)">5/8</div><div class="ph-mini-l">Tasks</div></div>
-                        <div class="ph-mini"><div class="ph-mini-e">🔥</div><div class="ph-mini-v" style="color:var(--orange)">3/5</div><div class="ph-mini-l">Habits</div></div>
+                        <div class="ph-mini"><div class="ph-mini-e" style="color:var(--green)">5/8</div><div class="ph-mini-l">Tasks</div></div>
+                        <div class="ph-mini"><div class="ph-mini-e" style="color:var(--orange)">3/5</div><div class="ph-mini-l">Habits</div></div>
                     </div>
                     <div style="display:flex;gap:8px;margin-bottom:10px">
-                        <div class="ph-streak">🔥 12 days</div>
+                        <div class="ph-streak">12 day streak</div>
                         <div style="padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;background:rgba(108,92,231,0.1);color:var(--purple-light)">+240 XP</div>
                     </div>
                     <div class="ph-card" style="margin-bottom:0">
-                        <div class="ph-label" style="margin-bottom:4px">🧠 AI Coach says</div>
+                        <div class="ph-label" style="margin-bottom:4px">AI Coach says</div>
                         <div style="font-size:11px;color:var(--muted);line-height:1.5">You're 42% more productive in the mornings. Try scheduling hard tasks before noon.</div>
                     </div>
                 </div>
             </div>
             <div class="float float-1">
-                <span class="f-emoji">🏆</span>
-                <div><div class="f-title">Achievement Unlocked</div><div class="f-sub">Early Bird — 7 days straight</div></div>
+                <div class="f-icon" style="background:rgba(253,203,110,0.15);color:var(--orange);">T</div>
+                <div><div class="f-title">Achievement Unlocked</div><div class="f-sub">Early Bird - 7 days straight</div></div>
             </div>
             <div class="float float-2">
-                <span class="f-emoji">⭐</span>
+                <div class="f-icon" style="background:rgba(0,206,201,0.15);color:var(--green);">+</div>
                 <div><div class="f-title">+50 XP</div><div class="f-sub">Workout completed</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ STATS BAR ═══ -->
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div><div class="stat-num">36</div><div class="stat-lbl">Unit Tests Passing</div></div>
-            <div><div class="stat-num">48</div><div class="stat-lbl">Source Files</div></div>
-            <div><div class="stat-num">100+</div><div class="stat-lbl">Achievements to Unlock</div></div>
-            <div><div class="stat-num">6</div><div class="stat-lbl">Lottie Animations</div></div>
-        </div>
-    </div>
-</div>
-
-<!-- ═══ FEATURES ═══ -->
+<!-- FEATURES -->
 <section class="features" id="features">
     <div class="container">
         <div class="feat-header">
@@ -404,7 +340,7 @@
             <div class="section-desc">No subscriptions. No paywalls. Just a clean, fast app that helps you get your life together.</div>
         </div>
 
-        <!-- Feature 1: Tasks -->
+        <!-- Tasks -->
         <div class="feat-row">
             <div class="feat-visual">
                 <div class="mock-tabs">
@@ -414,18 +350,18 @@
                 </div>
                 <div class="mock-list">
                     <div class="mock-item">
-                        <div class="mock-check done"><span style="color:#fff;font-size:10px">✓</span></div>
-                        <div class="mock-text"><div class="mock-text-title" style="text-decoration:line-through;opacity:0.5">Morning meditation</div><div class="mock-text-sub">Health • 20 min</div></div>
+                        <div class="mock-check done"><span style="color:#fff;font-size:10px">v</span></div>
+                        <div class="mock-text"><div class="mock-text-title" style="text-decoration:line-through;opacity:0.5">Morning meditation</div><div class="mock-text-sub">Health - 20 min</div></div>
                         <div class="mock-tag" style="background:rgba(0,206,201,0.12);color:var(--green)">+20 XP</div>
                     </div>
                     <div class="mock-item">
                         <div class="mock-check"></div>
-                        <div class="mock-text"><div class="mock-text-title">Read 30 pages</div><div class="mock-text-sub">Study • 45 min</div></div>
+                        <div class="mock-text"><div class="mock-text-title">Read 30 pages</div><div class="mock-text-sub">Study - 45 min</div></div>
                         <div class="mock-tag" style="background:rgba(255,118,117,0.12);color:var(--red)">High</div>
                     </div>
                     <div class="mock-item">
                         <div class="mock-check"></div>
-                        <div class="mock-text"><div class="mock-text-title">Grocery shopping</div><div class="mock-text-sub">Personal • 30 min</div></div>
+                        <div class="mock-text"><div class="mock-text-title">Grocery shopping</div><div class="mock-text-sub">Personal - 30 min</div></div>
                         <div class="mock-tag" style="background:rgba(253,203,110,0.12);color:var(--orange)">Med</div>
                     </div>
                 </div>
@@ -433,37 +369,37 @@
             <div class="feat-content">
                 <h3>Task manager that actually works</h3>
                 <ul class="feat-list">
-                    <li><span class="check">✓</span> Set priorities, deadlines, and categories for every task</li>
-                    <li><span class="check">✓</span> Swipe to complete, postpone, or delete — it's fast</li>
-                    <li><span class="check">✓</span> Recurring tasks so you never forget the basics</li>
-                    <li><span class="check">✓</span> Earn XP for completing tasks — hard tasks pay more</li>
-                    <li><span class="check">✓</span> Calendar view to see your whole week at a glance</li>
+                    <li><span class="check">v</span> Set priorities, deadlines, and categories for every task</li>
+                    <li><span class="check">v</span> Swipe to complete, postpone, or delete</li>
+                    <li><span class="check">v</span> Recurring tasks so you never forget the basics</li>
+                    <li><span class="check">v</span> Earn XP for completing tasks</li>
+                    <li><span class="check">v</span> Calendar view to see your whole week at a glance</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature 2: Habits -->
+        <!-- Habits -->
         <div class="feat-row reverse">
             <div class="feat-visual">
                 <div class="mock-list">
                     <div class="mock-item" style="border-color:rgba(0,206,201,0.3)">
-                        <span style="font-size:20px">💧</span>
-                        <div class="mock-text"><div class="mock-text-title">Drink Water</div><div class="mock-text-sub">🔥 14 day streak • Daily</div></div>
-                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">✓</div>
+                        <span style="font-size:16px;color:var(--green);font-weight:700">W</span>
+                        <div class="mock-text"><div class="mock-text-title">Drink Water</div><div class="mock-text-sub">14 day streak - Daily</div></div>
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">v</div>
                     </div>
                     <div class="mock-item">
-                        <span style="font-size:20px">📖</span>
-                        <div class="mock-text"><div class="mock-text-title">Read 30 minutes</div><div class="mock-text-sub">🔥 5 day streak • Daily</div></div>
+                        <span style="font-size:16px;color:var(--purple);font-weight:700">R</span>
+                        <div class="mock-text"><div class="mock-text-title">Read 30 minutes</div><div class="mock-text-sub">5 day streak - Daily</div></div>
                         <div style="width:28px;height:28px;border-radius:8px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px">+</div>
                     </div>
                     <div class="mock-item">
-                        <span style="font-size:20px">🧘</span>
-                        <div class="mock-text"><div class="mock-text-title">Meditate</div><div class="mock-text-sub">🔥 3 day streak • Daily</div></div>
+                        <span style="font-size:16px;color:var(--orange);font-weight:700">M</span>
+                        <div class="mock-text"><div class="mock-text-title">Meditate</div><div class="mock-text-sub">3 day streak - Daily</div></div>
                         <div style="width:28px;height:28px;border-radius:8px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px">+</div>
                     </div>
                     <div class="mock-item">
-                        <span style="font-size:20px">🏋️</span>
-                        <div class="mock-text"><div class="mock-text-title">Workout</div><div class="mock-text-sub">🔥 0 day streak • 3x/week</div></div>
+                        <span style="font-size:16px;color:var(--red);font-weight:700">E</span>
+                        <div class="mock-text"><div class="mock-text-title">Workout</div><div class="mock-text-sub">0 day streak - 3x/week</div></div>
                         <div style="width:28px;height:28px;border-radius:8px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px">+</div>
                     </div>
                 </div>
@@ -471,22 +407,22 @@
             <div class="feat-content">
                 <h3>Build habits that stick</h3>
                 <ul class="feat-list">
-                    <li><span class="check">✓</span> Track daily, weekly, or custom frequency habits</li>
-                    <li><span class="check">✓</span> Streak counter keeps you accountable — don't break the chain</li>
-                    <li><span class="check">✓</span> Each habit has its own difficulty and XP reward</li>
-                    <li><span class="check">✓</span> See your consistency rate over time</li>
-                    <li><span class="check">✓</span> Pick from 24 icons and color-code your habits</li>
+                    <li><span class="check">v</span> Track daily, weekly, or custom frequency habits</li>
+                    <li><span class="check">v</span> Streak counter keeps you accountable</li>
+                    <li><span class="check">v</span> Each habit has its own difficulty and XP reward</li>
+                    <li><span class="check">v</span> See your consistency rate over time</li>
+                    <li><span class="check">v</span> Pick from 24 icons and color-code your habits</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature 3: AI Coach -->
+        <!-- AI Coach -->
         <div class="feat-row">
             <div class="feat-visual" style="padding:20px">
                 <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:12px">
-                    <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--green));display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🧠</div>
+                    <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--green));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0">AI</div>
                     <div style="background:var(--card);border-radius:12px;padding:12px;border:1px solid rgba(45,45,68,0.4);flex:1">
-                        <div style="font-size:12px;color:var(--muted);line-height:1.6">Based on your last 7 days:<br><br>• You complete <strong style="color:var(--green)">68%</strong> of morning tasks<br>• Evening productivity drops after <strong style="color:var(--orange)">8 PM</strong><br>• Your reading habit is your most consistent 📖<br>• You've been averaging <strong style="color:var(--purple)">6.2 hours</strong> of sleep</div>
+                        <div style="font-size:12px;color:var(--muted);line-height:1.6">Based on your last 7 days:<br><br>- You complete <strong style="color:var(--green)">68%</strong> of morning tasks<br>- Evening productivity drops after <strong style="color:var(--orange)">8 PM</strong><br>- Your reading habit is your most consistent<br>- You've been averaging <strong style="color:var(--purple)">6.2 hours</strong> of sleep</div>
                     </div>
                 </div>
                 <div style="display:flex;gap:8px;align-items:flex-start;flex-direction:row-reverse">
@@ -499,26 +435,26 @@
             <div class="feat-content">
                 <h3>AI that knows your patterns</h3>
                 <ul class="feat-list">
-                    <li><span class="check">✓</span> Analyzes your tasks, habits, sleep, and mood data</li>
-                    <li><span class="check">✓</span> Tells you exactly where you're slacking — no sugarcoating</li>
-                    <li><span class="check">✓</span> Spots patterns: "You skip studying after 8 PM"</li>
-                    <li><span class="check">✓</span> Gives actionable advice, not generic motivational quotes</li>
-                    <li><span class="check">✓</span> Weekly and monthly review summaries</li>
+                    <li><span class="check">v</span> Analyzes your tasks, habits, sleep, and mood data</li>
+                    <li><span class="check">v</span> Tells you exactly where you're slacking</li>
+                    <li><span class="check">v</span> Spots patterns like "You skip studying after 8 PM"</li>
+                    <li><span class="check">v</span> Gives actionable advice, not generic quotes</li>
+                    <li><span class="check">v</span> Weekly and monthly review summaries</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature 4: Journal -->
+        <!-- Journal -->
         <div class="feat-row reverse">
             <div class="feat-visual">
                 <div class="mock-journal">
                     <div style="font-size:13px;font-weight:600;margin-bottom:12px">How are you feeling?</div>
                     <div class="mock-mood">
-                        <div class="mock-mood-item">😄</div>
-                        <div class="mock-mood-item sel">🙂</div>
-                        <div class="mock-mood-item">😐</div>
-                        <div class="mock-mood-item">😔</div>
-                        <div class="mock-mood-item">😢</div>
+                        <div class="mock-mood-item" style="font-size:14px;color:var(--muted)">1</div>
+                        <div class="mock-mood-item sel" style="font-size:14px;color:var(--purple);font-weight:700">2</div>
+                        <div class="mock-mood-item" style="font-size:14px;color:var(--muted)">3</div>
+                        <div class="mock-mood-item" style="font-size:14px;color:var(--muted)">4</div>
+                        <div class="mock-mood-item" style="font-size:14px;color:var(--muted)">5</div>
                     </div>
                     <div class="mock-slider-row">
                         <div class="mock-slider">
@@ -536,45 +472,45 @@
             <div class="feat-content">
                 <h3>Journal that captures your growth</h3>
                 <ul class="feat-list">
-                    <li><span class="check">✓</span> Morning and evening reflections with mood tracking</li>
-                    <li><span class="check">✓</span> Log energy, stress, and productivity scores</li>
-                    <li><span class="check">✓</span> Write gratitude lists, wins, and lessons learned</li>
-                    <li><span class="check">✓</span> Look back and see how far you've come</li>
-                    <li><span class="check">✓</span> Earn XP for every journal entry</li>
+                    <li><span class="check">v</span> Morning and evening reflections with mood tracking</li>
+                    <li><span class="check">v</span> Log energy, stress, and productivity scores</li>
+                    <li><span class="check">v</span> Write gratitude lists, wins, and lessons learned</li>
+                    <li><span class="check">v</span> Look back and see how far you've come</li>
+                    <li><span class="check">v</span> Earn XP for every journal entry</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature 5: Gamification -->
+        <!-- Gamification -->
         <div class="feat-row">
             <div class="feat-visual">
                 <div style="text-align:center;padding:20px 0">
-                    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--green));display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:12px;box-shadow:0 0 40px rgba(108,92,231,0.3)">⭐</div>
+                    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--green));display:inline-flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;margin-bottom:12px;box-shadow:0 0 40px rgba(108,92,231,0.3)">12</div>
                     <div style="font-size:24px;font-weight:800;margin-bottom:4px">Level 12</div>
                     <div style="font-size:12px;color:var(--muted);margin-bottom:16px">2,450 / 3,300 XP</div>
                     <div style="width:200px;height:6px;background:var(--border);border-radius:3px;margin:0 auto;overflow:hidden">
                         <div style="width:74%;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--green))"></div>
                     </div>
                     <div style="display:flex;justify-content:center;gap:24px;margin-top:20px">
-                        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--orange)">🔥 12</div><div style="font-size:10px;color:var(--muted)">Day Streak</div></div>
-                        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--green)">💰 340</div><div style="font-size:10px;color:var(--muted)">Coins</div></div>
-                        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--purple-light)">🏆 8</div><div style="font-size:10px;color:var(--muted)">Badges</div></div>
+                        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--orange)">12</div><div style="font-size:10px;color:var(--muted)">Day Streak</div></div>
+                        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--green)">340</div><div style="font-size:10px;color:var(--muted)">Coins</div></div>
+                        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--purple-light)">8</div><div style="font-size:10px;color:var(--muted)">Badges</div></div>
                     </div>
                 </div>
             </div>
             <div class="feat-content">
                 <h3>Gamification that motivates</h3>
                 <ul class="feat-list">
-                    <li><span class="check">✓</span> Earn XP for every completed task, habit, and journal entry</li>
-                    <li><span class="check">✓</span> Level up from 1 to 100+ — each level unlocks new features</li>
-                    <li><span class="check">✓</span> Collect coins, diamonds, and rare achievement badges</li>
-                    <li><span class="check">✓</span> Streak bonuses at 7, 30, and 100 days</li>
-                    <li><span class="check">✓</span> Animated celebrations when you hit milestones</li>
+                    <li><span class="check">v</span> Earn XP for every completed task, habit, and journal entry</li>
+                    <li><span class="check">v</span> Level up from 1 to 100+</li>
+                    <li><span class="check">v</span> Collect coins, diamonds, and rare achievement badges</li>
+                    <li><span class="check">v</span> Streak bonuses at 7, 30, and 100 days</li>
+                    <li><span class="check">v</span> Animated celebrations when you hit milestones</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature 6: Focus -->
+        <!-- Focus -->
         <div class="feat-row reverse">
             <div class="feat-visual" style="text-align:center;padding:32px">
                 <div style="position:relative;width:160px;height:160px;margin:0 auto 20px">
@@ -588,79 +524,43 @@
                     </div>
                 </div>
                 <div style="display:flex;gap:10px;justify-content:center">
-                    <div style="padding:8px 16px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted)">⏱ 25 min</div>
-                    <div style="padding:8px 16px;border-radius:10px;background:var(--purple);font-size:12px;color:#fff;font-weight:600">▶ Start</div>
-                    <div style="padding:8px 16px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted)">⏭ Skip</div>
+                    <div style="padding:8px 16px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted)">25 min</div>
+                    <div style="padding:8px 16px;border-radius:10px;background:var(--purple);font-size:12px;color:#fff;font-weight:600">Start</div>
+                    <div style="padding:8px 16px;border-radius:10px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted)">Skip</div>
                 </div>
             </div>
             <div class="feat-content">
                 <h3>Focus mode for deep work</h3>
                 <ul class="feat-list">
-                    <li><span class="check">✓</span> Pomodoro timer with customizable durations (15–90 min)</li>
-                    <li><span class="check">✓</span> Deep work mode for extended concentration</li>
-                    <li><span class="check">✓</span> Automatic break reminders after each session</li>
-                    <li><span class="check">✓</span> Track total focus time and sessions completed</li>
-                    <li><span class="check">✓</span> Session statistics to see your best focus hours</li>
+                    <li><span class="check">v</span> Pomodoro timer with customizable durations (15-90 min)</li>
+                    <li><span class="check">v</span> Deep work mode for extended concentration</li>
+                    <li><span class="check">v</span> Automatic break reminders after each session</li>
+                    <li><span class="check">v</span> Track total focus time and sessions completed</li>
+                    <li><span class="check">v</span> Session statistics to see your best focus hours</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ TESTIMONIALS ═══ -->
-<section class="testimonials" id="testimonials">
-    <div class="container">
-        <div class="feat-header">
-            <div class="section-tag">What people say</div>
-            <div class="section-title">Built by a developer, for everyone</div>
-        </div>
-        <div class="test-grid">
-            <div class="test-card">
-                <div class="test-stars">★★★★★</div>
-                <div class="test-text">"The AI coach actually calls out my procrastination patterns. It's like having a personal trainer for my brain."</div>
-                <div class="test-author">
-                    <div class="test-avatar">🧑‍💻</div>
-                    <div><div class="test-name">Dev K.</div><div class="test-role">Software Engineer</div></div>
-                </div>
-            </div>
-            <div class="test-card">
-                <div class="test-stars">★★★★★</div>
-                <div class="test-text">"Finally an app that doesn't feel like a toy. The dark theme is gorgeous and the gamification actually keeps me coming back."</div>
-                <div class="test-author">
-                    <div class="test-avatar">👩‍🎓</div>
-                    <div><div class="test-name">Sarah M.</div><div class="test-role">College Student</div></div>
-                </div>
-            </div>
-            <div class="test-card">
-                <div class="test-stars">★★★★★</div>
-                <div class="test-text">"I've tried every habit tracker out there. This is the first one where I actually maintained a streak past 30 days."</div>
-                <div class="test-author">
-                    <div class="test-avatar">👨‍💼</div>
-                    <div><div class="test-name">Raj P.</div><div class="test-role">Entrepreneur</div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ CTA ═══ -->
+<!-- CTA -->
 <section class="cta">
     <div class="container">
         <div class="cta-box">
             <h2>Your future self will thank you</h2>
-            <p>Download Critique+ for free and start building better habits today.</p>
+            <p>Download Strive for free and start building better habits today.</p>
             <div class="cta-btns">
-                <a href="download/CritiquePlus.apk" download class="btn btn-primary btn-lg">📱 Download APK</a>
-                <a href="web/" class="btn btn-green btn-lg">▶ Try in Browser</a>
+                <a href="download/Strive.apk" download class="btn btn-download btn-lg">Download APK</a>
+                <a href="web/" class="btn btn-primary btn-lg">Try in Browser</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
     <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
-        <span>© 2026 Critique+ · Built with Flutter</span>
+        <span>2026 Strive - Built with Flutter</span>
         <div style="display:flex;gap:20px">
             <a href="https://github.com/nishant007-afk/critique-plus">GitHub</a>
             <a href="web/">Live Demo</a>
