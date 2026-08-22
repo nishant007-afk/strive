@@ -22,7 +22,7 @@
         /* NAV */
         nav{position:fixed;top:0;width:100%;z-index:100;padding:0 24px;height:56px;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,13,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(37,37,64,0.5)}
         .nav-brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;text-decoration:none;color:var(--text)}
-        .nav-brand .icon{width:28px;height:28px;border-radius:8px;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff}
+        .nav-brand .icon{width:28px;height:28px;border-radius:7px;background:#5B5CFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.5px}
         .nav-right{display:flex;gap:10px;align-items:center}
         .nav-right a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;transition:color .2s}
         .nav-right a:hover{color:var(--text)}
@@ -113,10 +113,7 @@
         .mock-tag{font-size:8px;font-weight:600;padding:2px 6px;border-radius:4px;flex-shrink:0}
 
         /* Social Proof */
-        .social{padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-        .social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-        .social-item .num{font-size:28px;font-weight:800;color:var(--text)}
-        .social-item .lab{font-size:12px;color:var(--muted);margin-top:2px}
+
 
         /* CTA */
         .cta{padding:80px 0}
@@ -156,8 +153,7 @@
             .cta-box{padding:36px 20px}
             .cta-box h2{font-size:22px}
             .footer-inner{flex-direction:column;text-align:center}
-            .social-grid{grid-template-columns:repeat(2,1fr);gap:16px}
-            .social-item .num{font-size:22px}
+
         }
         @media(max-width:480px){
             .hero h1{font-size:30px;letter-spacing:-1px}
@@ -224,7 +220,7 @@
                 <div class="phone-notch"></div>
                 <div class="phone-body">
                     <div class="ph-greeting">Good Morning</div>
-                    <div class="ph-name">Alex - Level 12</div>
+                    <div class="ph-name">Champion</div>
                     <div class="ph-card">
                         <div class="ph-row"><span class="ph-label">Today's Progress</span><span class="ph-val" style="color:var(--purple)">72%</span></div>
                         <div class="ph-bar"><div class="ph-bar-fill"></div></div>
@@ -238,8 +234,8 @@
                         <div style="padding:2px 6px;border-radius:8px;font-size:9px;font-weight:600;background:rgba(108,92,231,0.1);color:var(--purple-light)">+240 XP</div>
                     </div>
                     <div class="ph-card" style="margin-bottom:0">
-                        <div class="ph-label" style="margin-bottom:2px">AI Coach</div>
-                        <div style="font-size:9px;color:var(--muted);line-height:1.5">You're 42% more productive in the mornings.</div>
+                        <div class="ph-label" style="margin-bottom:2px">AI Insight</div>
+                        <div style="font-size:9px;color:var(--muted);line-height:1.5">You perform 42% better in the morning.</div>
                     </div>
                 </div>
             </div>
@@ -251,17 +247,6 @@
                 <div class="f-icon" style="background:rgba(0,206,201,0.15);color:var(--green);">+</div>
                 <div><div class="f-title">+50 XP</div><div class="f-sub">Workout done</div></div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="social">
-    <div class="container">
-        <div class="social-grid">
-            <div class="social-item"><div class="num">12+</div><div class="lab">Features</div></div>
-            <div class="social-item"><div class="num">0</div><div class="lab">Ads</div></div>
-            <div class="social-item"><div class="num">AI</div><div class="lab">Powered Coach</div></div>
-            <div class="social-item"><div class="num">100%</div><div class="lab">Free</div></div>
         </div>
     </div>
 </section>
