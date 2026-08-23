@@ -38,13 +38,13 @@
 
         /* HERO */
         .hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 40px;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(108,92,231,0.08) 0%,transparent 60%);pointer-events:none}
+        .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:800px;height:800px;border-radius:50%;background:rgba(108,92,231,0.05);pointer-events:none}
         .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
         .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;color:var(--purple-light);margin-bottom:20px}
         .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
         .hero h1{font-size:52px;font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
-        .hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--purple-light),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero h1 em{font-style:normal;color:var(--green)}
         .hero p{color:var(--muted);font-size:16px;max-width:440px;margin-bottom:28px;line-height:1.7}
         .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
         .hero-stats{display:flex;gap:28px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
@@ -63,7 +63,7 @@
         .ph-label{font-size:8px;color:var(--muted)}
         .ph-val{font-size:12px;font-weight:700}
         .ph-bar{width:100%;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
-        .ph-bar-fill{height:100%;width:72%;border-radius:2px;background:linear-gradient(90deg,var(--purple),var(--green))}
+        .ph-bar-fill{height:100%;width:72%;border-radius:2px;background:var(--green)}
         .ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:6px}
         .ph-mini{background:var(--card);border-radius:8px;padding:7px;text-align:center;border:1px solid rgba(37,37,64,0.5)}
         .ph-mini-v{font-size:14px;font-weight:700;margin-top:1px}
@@ -92,7 +92,7 @@
         .feat-row.rtl{direction:rtl}.feat-row.rtl>*{direction:ltr}
 
         .feat-visual{background:var(--surface);border-radius:16px;border:1px solid var(--border);padding:18px;position:relative;overflow:hidden}
-        .feat-visual::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(108,92,231,0.03),transparent);pointer-events:none}
+        .feat-visual::after{content:'';position:absolute;inset:0;border-radius:16px;background:rgba(108,92,231,0.03);pointer-events:none}
 
         .feat-content h3{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
         .feat-list{list-style:none}
@@ -117,7 +117,7 @@
 
         /* CTA */
         .cta{padding:50px 0 80px}
-        .cta-box{background:linear-gradient(135deg,rgba(108,92,231,0.06),rgba(0,206,201,0.04));border:1px solid rgba(108,92,231,0.12);border-radius:20px;padding:50px 28px;text-align:center}
+        .cta-box{background:rgba(108,92,231,0.05);border:1px solid rgba(108,92,231,0.12);border-radius:20px;padding:50px 28px;text-align:center}
         .cta-box h2{font-size:28px;font-weight:800;margin-bottom:10px;letter-spacing:-0.5px}
         .cta-box p{color:var(--muted);margin-bottom:24px;font-size:14px}
         .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
@@ -195,7 +195,7 @@
     <div class="nav-right">
         <a href="#features">Features</a>
         <a href="web/" class="btn btn-outline btn-sm">Live Demo</a>
-        <a href="download/Strive-v12.apk" download class="btn btn-green btn-sm">Download</a>
+        <a href="download/Strive-v13.apk" download class="btn btn-green btn-sm">Download</a>
     </div>
 </nav>
 
@@ -206,7 +206,7 @@
             <h1>Stop scrolling.<br>Start <em>building.</em></h1>
             <p>Habits, tasks, journal, and personal coaching in one clean app. No subscriptions, no paywalls.</p>
             <div class="hero-btns">
-                <a href="download/Strive-v12.apk" download class="btn btn-green btn-lg">Download APK</a>
+                <a href="download/Strive-v13.apk" download class="btn btn-green btn-lg">Download APK</a>
                 <a href="web/" class="btn btn-outline btn-lg">Try in Browser</a>
             </div>
             <div class="hero-stats">
@@ -304,7 +304,7 @@
         <div class="feat-row">
             <div class="feat-visual" style="padding:14px">
                 <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:8px">
-                    <div style="width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--purple),var(--green));display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;flex-shrink:0">Co</div>
+                    <div style="width:24px;height:24px;border-radius:6px;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;flex-shrink:0">Co</div>
                     <div style="background:var(--card);border-radius:9px;padding:9px;border:1px solid rgba(37,37,64,0.4);flex:1">
                         <div style="font-size:10px;color:var(--muted);line-height:1.6">You complete <strong style="color:var(--green)">68%</strong> of morning tasks. Evening productivity drops after <strong style="color:var(--orange)">8 PM</strong>.</div>
                     </div>
@@ -360,10 +360,10 @@
         <!-- Gamification -->
         <div class="feat-row">
             <div class="feat-visual" style="text-align:center;padding:20px 16px">
-                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--green));display:inline-flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;box-shadow:0 0 24px rgba(108,92,231,0.25)">12</div>
+                <div style="width:64px;height:64px;border-radius:50%;background:var(--purple);display:inline-flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;box-shadow:0 0 24px rgba(108,92,231,0.25)">12</div>
                 <div style="font-size:18px;font-weight:800;margin-bottom:2px">Level 12</div>
                 <div style="font-size:10px;color:var(--muted);margin-bottom:12px">2,450 / 3,300 XP</div>
-                <div style="width:160px;height:4px;background:var(--border);border-radius:2px;margin:0 auto;overflow:hidden"><div style="width:74%;height:100%;border-radius:2px;background:linear-gradient(90deg,var(--purple),var(--green))"></div></div>
+                <div style="width:160px;height:4px;background:var(--border);border-radius:2px;margin:0 auto;overflow:hidden"><div style="width:74%;height:100%;border-radius:2px;background:var(--green)"></div></div>
                 <div style="display:flex;justify-content:center;gap:18px;margin-top:14px">
                     <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:var(--orange)">12</div><div style="font-size:8px;color:var(--muted)">Streak</div></div>
                     <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:var(--green)">340</div><div style="font-size:8px;color:var(--muted)">Coins</div></div>
@@ -419,7 +419,7 @@
             <h2>Your future self will thank you</h2>
             <p>Download Strive for free and start building better habits today.</p>
             <div class="cta-btns">
-                <a href="download/Strive-v12.apk" download class="btn btn-green btn-lg">Download APK</a>
+                <a href="download/Strive-v13.apk" download class="btn btn-green btn-lg">Download APK</a>
                 <a href="web/" class="btn btn-primary btn-lg">Try in Browser</a>
             </div>
         </div>
