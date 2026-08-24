@@ -3,462 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strive - Build Better Habits, Every Day</title>
-    <meta name="description" content="Strive tracks your habits, manages your tasks, and gives you personalized feedback so you actually follow through on your goals.">
+    <title>Strive</title>
+    <meta name="description" content="Strive is an RPG-style app for students: programs, quests, XP, ranks and a real AI coach for better grades, confidence, fitness, sleep and style.">
+    <meta property="og:title" content="Strive — Level up your life.">
+    <meta property="og:description" content="Programs, quests and real coaching for students who want better grades, confidence, fitness, sleep and style.">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
-            --purple:#6C5CE7;--purple-light:#A29BFE;--green:#00CEC9;--orange:#FDCB6E;
-            --red:#FF7675;--bg:#08080D;--surface:#111118;--card:#18182A;
-            --border:#252540;--text:#F0F0F5;--muted:#7A7A95;
+            --bg:#0A0A0F;
+            --card:#14141C;
+            --primary:#5B5CFF;
+            --accent:#00E5A8;
+            --text:#FFFFFF;
+            --muted:#9CA3AF;
+            --border:rgba(255,255,255,.08);
+            --radius:20px;
         }
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+        @media(prefers-reduced-motion:no-preference){
+            html{scroll-behavior:smooth}
+        }
+        body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        ::selection{background:rgba(91,92,255,.45)}
+        a:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:6px}
+
+        .container{max-width:1080px;margin:0 auto;padding:0 24px}
 
         /* NAV */
-        nav{position:fixed;top:0;width:100%;z-index:100;padding:0 24px;height:56px;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,13,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(37,37,64,0.5)}
-        .nav-brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;text-decoration:none;color:var(--text)}
-        .nav-brand .icon{width:28px;height:28px;border-radius:7px;background:#5B5CFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;letter-spacing:-0.5px}
-        .nav-right{display:flex;gap:10px;align-items:center}
-        .nav-right a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;transition:color .2s}
-        .nav-right a:hover{color:var(--text)}
+        nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+        .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text)}
+        .brand-tile{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;box-shadow:0 4px 16px rgba(91,92,255,.4)}
+        .brand-name{font-weight:700;font-size:17px;letter-spacing:-.01em}
+        .nav-links{display:flex;align-items:center;gap:30px}
+        .nav-links a:not(.btn){color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+        .nav-links a:not(.btn):hover{color:var(--text)}
 
         /* BUTTONS */
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:10px;font-weight:600;font-size:13px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
-        .btn:active{transform:scale(0.97)}
-        .btn-primary{background:var(--purple);color:#fff}.btn-primary:hover{background:#5A4AD4}
-        .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-outline:hover{border-color:var(--purple);color:var(--purple-light)}
-        .btn-green{background:var(--green);color:var(--bg);font-weight:700}.btn-green:hover{background:#00B5B0}
-        .btn-sm{padding:7px 14px;font-size:11px;border-radius:8px}
-        .btn-lg{padding:14px 28px;font-size:14px;border-radius:12px}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+        .btn-sm{padding:9px 18px;font-size:13px}
+        .btn-solid{background:var(--primary);color:#fff;box-shadow:0 8px 24px rgba(91,92,255,.32)}
+        .btn-solid:hover{background:#4a4bef;transform:translateY(-1px)}
+        .btn-ghost{background:transparent;color:var(--text);border-color:rgba(255,255,255,.14)}
+        .btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04)}
+        .btn svg{flex-shrink:0}
 
         /* HERO */
-        .hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 40px;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:800px;height:800px;border-radius:50%;background:rgba(108,92,231,0.05);pointer-events:none}
-        .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-        .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;color:var(--purple-light);margin-bottom:20px}
-        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-        .hero h1{font-size:52px;font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:18px}
-        .hero h1 em{font-style:normal;color:var(--green)}
-        .hero p{color:var(--muted);font-size:16px;max-width:440px;margin-bottom:28px;line-height:1.7}
-        .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-        .hero-stats{display:flex;gap:28px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
-        .hero-stat .val{font-size:22px;font-weight:800;color:var(--text)}
-        .hero-stat .label{font-size:11px;color:var(--muted);margin-top:1px}
+        .hero{position:relative;padding:104px 0 112px;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-220px;right:-160px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(91,92,255,.14),transparent 65%);pointer-events:none}
+        .hero::after{content:'';position:absolute;bottom:-320px;left:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,168,.07),transparent 65%);pointer-events:none}
+        .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+        .hero h1{font-size:clamp(42px,6vw,56px);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:22px}
+        .grad-text{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .hero-sub{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:34px}
+        .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+        .trust-strip{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;color:var(--muted);font-size:13px;font-weight:500}
+        .trust-strip span+span::before{content:'·';margin-right:10px;color:rgba(255,255,255,.25)}
 
-        /* PHONE */
-        .hero-phone{display:flex;justify-content:center;position:relative}
-        .phone{width:260px;height:540px;background:var(--surface);border-radius:36px;border:1.5px solid var(--border);overflow:hidden;position:relative;box-shadow:0 60px 120px rgba(0,0,0,0.5)}
-        .phone-notch{width:80px;height:20px;background:var(--bg);border-radius:0 0 12px 12px;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:2}
-        .phone-body{padding:36px 12px 12px;height:100%;overflow:hidden}
-        .ph-greeting{font-size:16px;font-weight:700;margin-bottom:2px}
-        .ph-name{font-size:9px;color:var(--muted);margin-bottom:12px}
-        .ph-card{background:var(--card);border-radius:10px;padding:10px;margin-bottom:6px;border:1px solid rgba(37,37,64,0.5)}
-        .ph-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
-        .ph-label{font-size:8px;color:var(--muted)}
-        .ph-val{font-size:12px;font-weight:700}
-        .ph-bar{width:100%;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
-        .ph-bar-fill{height:100%;width:72%;border-radius:2px;background:var(--green)}
-        .ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:6px}
-        .ph-mini{background:var(--card);border-radius:8px;padding:7px;text-align:center;border:1px solid rgba(37,37,64,0.5)}
-        .ph-mini-v{font-size:14px;font-weight:700;margin-top:1px}
-        .ph-mini-l{font-size:7px;color:var(--muted)}
-        .ph-streak{display:inline-flex;align-items:center;gap:3px;background:rgba(253,203,110,0.1);padding:2px 7px;border-radius:8px;font-size:9px;font-weight:600;color:var(--orange)}
-
-        .float{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:7px 10px;display:flex;align-items:center;gap:6px;box-shadow:0 12px 32px rgba(0,0,0,0.4);animation:bob 3s ease-in-out infinite;font-size:10px;z-index:3}
-        .float-1{top:60px;right:-15px}
-        .float-2{bottom:80px;left:-25px;animation-delay:1.5s}
-        .float .f-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
-        .float .f-title{font-weight:600}.float .f-sub{color:var(--muted);font-size:8px}
-        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+        /* PHONE MOCKUP */
+        .phone-wrap{position:relative;display:flex;justify-content:center}
+        .phone-wrap::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(91,92,255,.22),transparent 70%);filter:blur(10px);pointer-events:none}
+        .phone{position:relative;width:300px;border-radius:36px;border:1px solid rgba(255,255,255,.14);background:#0C0C13;padding:10px;box-shadow:0 48px 110px rgba(0,0,0,.6)}
+        .screen{border-radius:27px;border:1px solid var(--border);background:#0E0E16;padding:22px 16px 18px;overflow:hidden}
+        .scr-status{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;color:var(--muted);margin-bottom:16px}
+        .scr-status .dots{display:flex;gap:3px}
+        .scr-status .dots i{width:3px;height:3px;border-radius:50%;background:var(--muted)}
+        .scr-greet{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+        .scr-greet .who{display:flex;align-items:center;gap:10px;text-align:left}
+        .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+        .scr-greet .hi{font-size:11px;color:var(--muted);line-height:1.3}
+        .scr-greet .name{font-size:14px;font-weight:700;line-height:1.3}
+        .bell{width:32px;height:32px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+        .lvl-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+        .lvl-pill{background:linear-gradient(135deg,rgba(91,92,255,.25),rgba(0,229,168,.18));border:1px solid rgba(91,92,255,.45);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700}
+        .rank-chip{background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.3);color:var(--accent);border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.04em}
+        .quest{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px 12px;margin-bottom:8px}
+        .q-dot{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(91,92,255,.14);color:#8f90ff}
+        .q-dot.g{background:rgba(0,229,168,.12);color:var(--accent)}
+        .q-txt{min-width:0;flex:1;text-align:left}
+        .q-title{font-size:11px;font-weight:600;line-height:1.35}
+        .q-sub{font-size:9px;color:var(--muted);line-height:1.35}
+        .xp-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;flex-shrink:0;background:rgba(0,229,168,.12);color:var(--accent)}
+        .xp-tag.done{background:rgba(255,255,255,.06);color:var(--muted)}
+        .scr-progress{margin-top:14px}
+        .p-label{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:6px}
+        .p-bar{height:4px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
+        .p-fill{height:100%;width:67%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent))}
 
         /* SECTIONS */
-        .container{max-width:1060px;margin:0 auto;padding:0 24px}
-        .section-tag{display:inline-block;font-size:10px;font-weight:600;color:var(--purple-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-        .section-title{font-size:32px;font-weight:800;letter-spacing:-0.8px;margin-bottom:12px}
-        .section-desc{color:var(--muted);font-size:14px;max-width:500px}
+        section{padding:104px 0}
+        .sec-head{text-align:center;max-width:560px;margin:0 auto 64px}
+        .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+        .sec-head h2{font-size:clamp(28px,4vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+        .sec-head p{color:var(--muted);font-size:15px}
 
         /* FEATURES */
-        .features{padding:80px 0}
-        .feat-header{text-align:center;margin-bottom:50px}
-        .feat-header .section-desc{margin:0 auto}
+        .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+        .card:hover{border-color:rgba(91,92,255,.45);transform:translateY(-3px)}
+        .icon-tile{width:44px;height:44px;border-radius:12px;background:rgba(91,92,255,.13);color:#8f90ff;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+        .icon-tile.a{background:rgba(0,229,168,.1);color:var(--accent)}
+        .card h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+        .card p{color:var(--muted);font-size:14px}
+        .card-wide{grid-column:span 2;display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:center}
+        .chat{display:flex;flex-direction:column;gap:12px}
+        .bubble{max-width:88%;padding:12px 16px;border-radius:16px;font-size:13px;line-height:1.55}
+        .bubble.coach{align-self:flex-start;background:#1B1B26;border:1px solid var(--border);border-bottom-left-radius:6px}
+        .bubble.coach b{color:var(--accent);font-weight:600}
+        .bubble.user{align-self:flex-end;background:rgba(91,92,255,.18);border:1px solid rgba(91,92,255,.38);border-bottom-right-radius:6px}
+        .chat-input{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px;border:1px solid var(--border);background:#0F0F17;border-radius:999px;padding:11px 18px;color:var(--muted);font-size:13px}
+        .send-btn{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
-        .feat-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:60px}
-        .feat-row.rtl{direction:rtl}.feat-row.rtl>*{direction:ltr}
+        /* HOW IT WORKS */
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px}
+        .step-num{width:44px;height:44px;border-radius:12px;border:1px solid rgba(91,92,255,.4);background:rgba(91,92,255,.1);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;margin-bottom:22px}
+        .step-num em{font-style:normal;background:linear-gradient(135deg,#8f90ff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .step h3{font-size:17px;font-weight:700;margin-bottom:8px}
+        .step p{color:var(--muted);font-size:14px}
 
-        .feat-visual{background:var(--surface);border-radius:16px;border:1px solid var(--border);padding:18px;position:relative;overflow:hidden}
-        .feat-visual::after{content:'';position:absolute;inset:0;border-radius:16px;background:rgba(108,92,231,0.03);pointer-events:none}
-
-        .feat-content h3{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
-        .feat-list{list-style:none}
-        .feat-list li{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:13px;color:var(--muted);line-height:1.5}
-        .feat-list li .ck{flex-shrink:0;width:18px;height:18px;border-radius:5px;background:rgba(0,206,201,0.12);display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px;color:var(--green)}
-
-        /* Mock components */
-        .mock-tabs{display:flex;gap:4px;margin-bottom:12px}
-        .mock-tab{padding:4px 10px;border-radius:6px;font-size:9px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--border)}
-        .mock-tab.active{background:var(--purple);color:#fff;border-color:var(--purple)}
-        .mock-list{display:flex;flex-direction:column;gap:5px}
-        .mock-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--card);border-radius:9px;border:1px solid rgba(37,37,64,0.4)}
-        .mock-check{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border);flex-shrink:0}
-        .mock-check.done{background:var(--green);border-color:var(--green);display:flex;align-items:center;justify-content:center}
-        .mock-text{flex:1;min-width:0}
-        .mock-text-title{font-size:11px;font-weight:500}
-        .mock-text-sub{font-size:8px;color:var(--muted)}
-        .mock-tag{font-size:8px;font-weight:600;padding:2px 6px;border-radius:4px;flex-shrink:0}
-
-        /* Social Proof */
-
-
-        /* CTA */
-        .cta{padding:50px 0 80px}
-        .cta-box{background:rgba(108,92,231,0.05);border:1px solid rgba(108,92,231,0.12);border-radius:20px;padding:50px 28px;text-align:center}
-        .cta-box h2{font-size:28px;font-weight:800;margin-bottom:10px;letter-spacing:-0.5px}
-        .cta-box p{color:var(--muted);margin-bottom:24px;font-size:14px}
-        .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+        /* PRIVACY BAND */
+        .privacy{padding:0}
+        .privacy-band{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+        .privacy-band::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:480px;height:240px;background:radial-gradient(ellipse,rgba(0,229,168,.1),transparent 70%);pointer-events:none}
+        .shield{width:52px;height:52px;border-radius:14px;border:1px solid rgba(0,229,168,.35);background:rgba(0,229,168,.09);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:22px}
+        .privacy-band h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+        .privacy-band p{color:var(--muted);font-size:15px;max-width:440px;margin:0 auto}
 
         /* FOOTER */
-        footer{padding:28px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:11px}
-        footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--text)}
-        .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-        .footer-links{display:flex;gap:14px}
+        footer{border-top:1px solid var(--border);padding:32px 0;margin-top:104px}
+        .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+        .foot-copy{color:var(--muted);font-size:13px}
+        .ver-badge{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--accent);background:rgba(0,229,168,.08);border:1px solid rgba(0,229,168,.28);border-radius:999px;padding:4px 12px}
+        .foot-links{display:flex;gap:22px}
+        .foot-links a{color:var(--muted);font-size:13px;text-decoration:none;transition:color .2s}
+        .foot-links a:hover{color:var(--text)}
+
+        /* REVEAL */
+        .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+        .js .reveal.in{opacity:1;transform:none}
+
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation:none!important;transition:none!important}
+            .js .reveal{opacity:1;transform:none}
+        }
 
         /* RESPONSIVE */
-        @media(max-width:1024px){
-            .hero h1{font-size:42px}
-            .feat-row{gap:30px}
-            .section-title{font-size:28px}
+        @media(max-width:900px){
+            .hero{padding:80px 0 88px}
+            .hero-inner{grid-template-columns:1fr;gap:64px;text-align:center}
+            .hero-sub{margin-left:auto;margin-right:auto}
+            .hero-ctas,.trust-strip{justify-content:center}
+            .feat-grid{grid-template-columns:1fr}
+            .card-wide{grid-column:span 1;grid-template-columns:1fr;gap:24px}
+            .steps{grid-template-columns:1fr}
+            section{padding:80px 0}
+            .sec-head{margin-bottom:48px}
+            .nav-links a:not(.btn){display:none}
         }
-        @media(max-width:768px){
-            .hero-inner{grid-template-columns:1fr}
-            .hero{text-align:center;min-height:auto;padding:80px 20px 40px}
-            .hero p{margin:0 auto 24px}
-            .hero-btns{justify-content:center}
-            .hero-stats{justify-content:center}
-            .hero-phone{margin-top:30px}
-            .phone{width:220px;height:450px;border-radius:28px}
-            .float{display:none}
-            .feat-row{grid-template-columns:1fr;gap:20px}
-            .feat-row.rtl{direction:ltr}
-            .feat-visual{order:-1}
-            .features{padding:60px 0}
-            .container{padding:0 16px}
-            nav{padding:0 16px}
-            .nav-right a:not(.btn){display:none}
-            .cta-box{padding:36px 20px}
-            .cta-box h2{font-size:22px}
-            .footer-inner{flex-direction:column;text-align:center}
-
-        }
-        @media(max-width:480px){
-            .hero h1{font-size:30px;letter-spacing:-1px}
-            .hero p{font-size:13px}
-            .phone{width:200px;height:420px}
-            .phone-body{padding:32px 10px 10px}
-            .ph-greeting{font-size:14px}
-            .section-title{font-size:22px}
-            .feat-content h3{font-size:17px}
-            .feat-list li{font-size:12px;padding:5px 0}
-            .mock-item{padding:6px 8px;gap:6px}
-            .mock-text-title{font-size:10px}
-            .mock-text-sub{font-size:7px}
-            .cta{padding:50px 0}
-            .cta-box{padding:28px 16px;border-radius:16px}
-            .cta-box h2{font-size:20px}
-            .feat-row{margin-bottom:40px}
-            .feat-visual{padding:14px;border-radius:12px}
-            .hero-stats{gap:20px}
-            .hero-stat .val{font-size:18px}
-        }
-        @media(max-width:360px){
-            .hero h1{font-size:26px}
-            .hero{padding:70px 14px 30px}
-            .phone{width:180px;height:380px}
-            .btn{padding:9px 16px;font-size:12px}
-            .btn-lg{padding:11px 20px;font-size:13px}
-        }
-        @media(max-height:500px) and (orientation:landscape){
-            .hero{min-height:auto;padding:70px 20px 20px}
-            .phone,.hero-phone{display:none}
+        @media(max-width:600px){
+            .container{padding:0 18px}
+            .hero{padding:64px 0 72px}
+            .hero h1{font-size:38px}
+            .hero-sub{font-size:15px}
+            .btn{padding:11px 20px;font-size:13px}
+            .phone{width:270px}
+            .card{padding:22px}
+            .privacy-band{padding:48px 22px}
+            footer{margin-top:80px}
+            .foot-inner{flex-direction:column;text-align:center}
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="nav-brand"><span class="icon">S</span> Strive</a>
-    <div class="nav-right">
-        <a href="#features">Features</a>
-        <a href="web/" class="btn btn-outline btn-sm">Live Demo</a>
-        <a href="download/Strive-v36.apk" download class="btn btn-green btn-sm">Download</a>
+    <div class="container nav-inner">
+        <a href="#" class="brand" aria-label="Strive home">
+            <span class="brand-tile">S</span>
+            <span class="brand-name">Strive</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#privacy">Privacy</a>
+            <a href="download/Strive-v36.apk" download class="btn btn-solid btn-sm">Download</a>
+        </div>
     </div>
 </nav>
 
-<section class="hero">
-    <div class="hero-inner">
+<header class="hero">
+    <div class="container hero-inner">
         <div>
-            <div class="hero-badge"><span class="dot"></span> Free and open source</div>
-            <h1>Stop scrolling.<br>Start <em>building.</em></h1>
-            <p>Habits, tasks, journal, and personal coaching in one clean app. No subscriptions, no paywalls.</p>
-            <div class="hero-btns">
-                <a href="download/Strive-v36.apk" download class="btn btn-green btn-lg">Download APK</a>
-                <a href="web/" class="btn btn-outline btn-lg">Try in Browser</a>
+            <h1>Level up<br>your <span class="grad-text">life.</span></h1>
+            <p class="hero-sub">Programs, quests and real coaching for students who want better grades, confidence, fitness, sleep and style.</p>
+            <div class="hero-ctas">
+                <a href="download/Strive-v36.apk" download class="btn btn-solid">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download APK
+                </a>
+                <a href="#how" class="btn btn-ghost">How it works</a>
             </div>
-            <div class="hero-stats">
-                <div class="hero-stat"><div class="val">12+</div><div class="label">Features</div></div>
-                <div class="hero-stat"><div class="val">Free</div><div class="label">No ads</div></div>
-                <div class="hero-stat"><div class="val">Coach</div><div class="label">Built right in</div></div>
-            </div>
+            <div class="trust-strip"><span>Local-first data</span><span>Real screen-time insights</span><span>AI coach</span></div>
         </div>
-        <div class="hero-phone">
-            <div class="phone">
-                <div class="phone-notch"></div>
-                <div class="phone-body">
-                    <div class="ph-greeting">Good Morning</div>
-                    <div class="ph-name">Champion</div>
-                    <div class="ph-card">
-                        <div class="ph-row"><span class="ph-label">Today's Progress</span><span class="ph-val" style="color:var(--purple)">72%</span></div>
-                        <div class="ph-bar"><div class="ph-bar-fill"></div></div>
+
+        <div class="phone-wrap">
+            <div class="phone" role="img" aria-label="Strive app Today screen preview">
+                <div class="screen">
+                    <div class="scr-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+                    <div class="scr-greet">
+                        <div class="who">
+                            <span class="avatar">N</span>
+                            <span><span class="hi">Good morning,</span><br><span class="name">Nishant</span></span>
+                        </div>
+                        <span class="bell"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
                     </div>
-                    <div class="ph-grid">
-                        <div class="ph-mini"><div class="ph-mini-v" style="color:var(--green)">5/8</div><div class="ph-mini-l">Tasks</div></div>
-                        <div class="ph-mini"><div class="ph-mini-v" style="color:var(--orange)">3/5</div><div class="ph-mini-l">Habits</div></div>
+                    <div class="lvl-row">
+                        <span class="lvl-pill">Level 12</span>
+                        <span class="rank-chip">Gold II</span>
                     </div>
-                    <div style="display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap">
-                        <div class="ph-streak">12 day streak</div>
-                        <div style="padding:2px 6px;border-radius:8px;font-size:9px;font-weight:600;background:rgba(108,92,231,0.1);color:var(--purple-light)">+240 XP</div>
+                    <div class="quest">
+                        <span class="q-dot g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+                        <span class="q-txt"><span class="q-title">Deep study block</span><br><span class="q-sub">45 min focused revision</span></span>
+                        <span class="xp-tag">+40 XP</span>
                     </div>
-                    <div class="ph-card" style="margin-bottom:0">
-                        <div class="ph-label" style="margin-bottom:2px">Insight</div>
-                        <div style="font-size:9px;color:var(--muted);line-height:1.5">You perform 42% better in the morning.</div>
+                    <div class="quest">
+                        <span class="q-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M20.2 20.2 12 12l8.2-8.2"/><path d="m16 7 1-5 5 1-4 4"/></svg></span>
+                        <span class="q-txt"><span class="q-title">Push day workout</span><br><span class="q-sub">Fitness program · Week 4</span></span>
+                        <span class="xp-tag">+60 XP</span>
+                    </div>
+                    <div class="quest">
+                        <span class="q-dot g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+                        <span class="q-txt"><span class="q-title">Lights out by 11 PM</span><br><span class="q-sub">Sleep quest · streak 6 days</span></span>
+                        <span class="xp-tag done">Done</span>
+                    </div>
+                    <div class="scr-progress">
+                        <div class="p-label"><span>Daily quests</span><span>2 / 3 complete</span></div>
+                        <div class="p-bar"><div class="p-fill"></div></div>
                     </div>
                 </div>
             </div>
-            <div class="float float-1">
-                <div class="f-icon" style="background:rgba(253,203,110,0.15);color:var(--orange);">T</div>
-                <div><div class="f-title">Achievement Unlocked</div><div class="f-sub">Early Bird - 7 days</div></div>
+        </div>
+    </div>
+</header>
+
+<section id="features">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="eyebrow">Features</span>
+            <h2>Built like a game.<br>Tuned for real life.</h2>
+            <p>Every part of Strive turns daily effort into measurable progress.</p>
+        </div>
+
+        <div class="feat-grid">
+            <div class="card reveal">
+                <div class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+                <h3>Programs with missions</h3>
+                <p>Structured multi-week plans that break big goals into daily missions.</p>
             </div>
-            <div class="float float-2">
-                <div class="f-icon" style="background:rgba(0,206,201,0.15);color:var(--green);">+</div>
-                <div><div class="f-title">+50 XP</div><div class="f-sub">Workout done</div></div>
+
+            <div class="card reveal">
+                <div class="icon-tile a"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <h3>Quests, XP &amp; ranks</h3>
+                <p>Earn XP for every completed quest and climb from Bronze to Legend.</p>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                <h3>Attributes per focus area</h3>
+                <p>Discipline, focus, strength and style grow separately as you show up.</p>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-tile a"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+                <h3>Academics: GPA &amp; exams</h3>
+                <p>Track GPA, exam dates and study quests in one academic dashboard.</p>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></div>
+                <h3>Appearance: outfit AI check</h3>
+                <p>Get instant AI feedback on fit, color pairing and grooming.</p>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-tile a"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
+                <h3>Digital control: real usage stats</h3>
+                <p>See exactly where your screen time goes and set hard limits.</p>
+            </div>
+
+            <div class="card card-wide reveal">
+                <div>
+                    <div class="icon-tile a"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+                    <h3>Coach chat</h3>
+                    <p>An AI coach that reads your real stats — sleep, quests, grades and screen time — and tells you what to change next.</p>
+                </div>
+                <div class="chat" aria-label="Sample coach conversation">
+                    <div class="bubble coach">Your sleep averaged <b>6.2h</b> this week — evening quests slipped three days straight.</div>
+                    <div class="bubble user">Finals start Monday. What should I change?</div>
+                    <div class="bubble coach">Move workouts to mornings and hard-stop screens at 10:30 PM. I'll double XP on your <b>6 AM study block</b>.</div>
+                    <div class="chat-input"><span>Message your coach…</span><span class="send-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="features" id="features">
+<section id="how">
     <div class="container">
-        <div class="feat-header">
-            <div class="section-tag">Features</div>
-            <div class="section-title">Everything you need</div>
-            <div class="section-desc">One app to track habits, manage tasks, write journals, and get personalized feedback.</div>
+        <div class="sec-head reveal">
+            <span class="eyebrow">How it works</span>
+            <h2>Three steps to a stronger you</h2>
         </div>
-
-        <!-- Tasks -->
-        <div class="feat-row">
-            <div class="feat-visual">
-                <div class="mock-tabs"><div class="mock-tab active">Today</div><div class="mock-tab">Pending</div><div class="mock-tab">Done</div></div>
-                <div class="mock-list">
-                    <div class="mock-item"><div class="mock-check done"><span style="color:#fff;font-size:8px">v</span></div><div class="mock-text"><div class="mock-text-title" style="text-decoration:line-through;opacity:0.5">Morning meditation</div><div class="mock-text-sub">Health</div></div><div class="mock-tag" style="background:rgba(0,206,201,0.12);color:var(--green)">+20</div></div>
-                    <div class="mock-item"><div class="mock-check"></div><div class="mock-text"><div class="mock-text-title">Read 30 pages</div><div class="mock-text-sub">Study</div></div><div class="mock-tag" style="background:rgba(255,118,117,0.12);color:var(--red)">High</div></div>
-                    <div class="mock-item"><div class="mock-check"></div><div class="mock-text"><div class="mock-text-title">Grocery shopping</div><div class="mock-text-sub">Personal</div></div><div class="mock-tag" style="background:rgba(253,203,110,0.12);color:var(--orange)">Med</div></div>
-                </div>
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step-num"><em>01</em></div>
+                <h3>Pick your areas</h3>
+                <p>Choose what matters — academics, fitness, sleep, confidence or style.</p>
             </div>
-            <div class="feat-content">
-                <h3>Task manager that works</h3>
-                <ul class="feat-list">
-                    <li><span class="ck">v</span> Set priorities, deadlines, and categories</li>
-                    <li><span class="ck">v</span> Swipe to complete, postpone, or delete</li>
-                    <li><span class="ck">v</span> Earn XP for completing tasks</li>
-                    <li><span class="ck">v</span> Calendar view for your whole week</li>
-                </ul>
+            <div class="step reveal">
+                <div class="step-num"><em>02</em></div>
+                <h3>Follow daily missions</h3>
+                <p>Your program turns goals into simple quests with real XP on the line.</p>
             </div>
-        </div>
-
-        <!-- Habits -->
-        <div class="feat-row rtl">
-            <div class="feat-visual">
-                <div class="mock-list">
-                    <div class="mock-item" style="border-color:rgba(0,206,201,0.3)"><span style="font-size:12px;color:var(--green);font-weight:700">W</span><div class="mock-text"><div class="mock-text-title">Drink Water</div><div class="mock-text-sub">14 day streak</div></div><div style="width:22px;height:22px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px">v</div></div>
-                    <div class="mock-item"><span style="font-size:12px;color:var(--purple);font-weight:700">R</span><div class="mock-text"><div class="mock-text-title">Read 30 min</div><div class="mock-text-sub">5 day streak</div></div><div style="width:22px;height:22px;border-radius:6px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:10px">+</div></div>
-                    <div class="mock-item"><span style="font-size:12px;color:var(--orange);font-weight:700">M</span><div class="mock-text"><div class="mock-text-title">Meditate</div><div class="mock-text-sub">3 day streak</div></div><div style="width:22px;height:22px;border-radius:6px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:10px">+</div></div>
-                </div>
-            </div>
-            <div class="feat-content">
-                <h3>Build habits that stick</h3>
-                <ul class="feat-list">
-                    <li><span class="ck">v</span> Daily, weekly, or custom frequency</li>
-                    <li><span class="ck">v</span> Streak counter keeps you accountable</li>
-                    <li><span class="ck">v</span> Difficulty-based XP rewards</li>
-                    <li><span class="ck">v</span> Pick from 24 icons to color-code habits</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Coach -->
-        <div class="feat-row">
-            <div class="feat-visual" style="padding:14px">
-                <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:8px">
-                    <div style="width:24px;height:24px;border-radius:6px;background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;flex-shrink:0">Co</div>
-                    <div style="background:var(--card);border-radius:9px;padding:9px;border:1px solid rgba(37,37,64,0.4);flex:1">
-                        <div style="font-size:10px;color:var(--muted);line-height:1.6">You complete <strong style="color:var(--green)">68%</strong> of morning tasks. Evening productivity drops after <strong style="color:var(--orange)">8 PM</strong>.</div>
-                    </div>
-                </div>
-                <div style="display:flex;gap:6px;align-items:flex-start;flex-direction:row-reverse">
-                    <div style="width:24px;height:24px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;color:var(--bg);font-weight:700">A</div>
-                    <div style="background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.2);border-radius:9px;padding:9px;flex:1">
-                        <div style="font-size:10px;color:var(--text);line-height:1.5">How can I improve my evenings?</div>
-                    </div>
-                </div>
-            </div>
-            <div class="feat-content">
-                <h3>Coach that knows your patterns</h3>
-                <ul class="feat-list">
-                    <li><span class="ck">v</span> Analyzes tasks, habits, sleep, and mood</li>
-                    <li><span class="ck">v</span> Spots patterns and slacking areas</li>
-                    <li><span class="ck">v</span> Actionable advice, not generic quotes</li>
-                    <li><span class="ck">v</span> Weekly and monthly summaries</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Journal -->
-        <div class="feat-row rtl">
-            <div class="feat-visual">
-                <div style="background:var(--card);border-radius:10px;padding:12px;border:1px solid rgba(37,37,64,0.4)">
-                    <div style="font-size:10px;font-weight:600;margin-bottom:8px">How are you feeling?</div>
-                    <div style="display:flex;gap:5px;margin-bottom:8px">
-                        <div style="width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--surface);border:1px solid var(--border)">1</div>
-                        <div style="width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;background:rgba(108,92,231,0.15);border:1px solid var(--purple);color:var(--purple);font-weight:700">2</div>
-                        <div style="width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--surface);border:1px solid var(--border)">3</div>
-                        <div style="width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--surface);border:1px solid var(--border)">4</div>
-                        <div style="width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--surface);border:1px solid var(--border)">5</div>
-                    </div>
-                    <div style="display:flex;gap:10px;margin-bottom:8px">
-                        <div style="flex:1"><div style="font-size:8px;color:var(--muted);display:flex;justify-content:space-between"><span>Energy</span><span style="color:var(--orange)">7/10</span></div><div style="width:100%;height:2px;background:var(--border);border-radius:1px;margin-top:3px"><div style="width:70%;height:100%;border-radius:1px;background:var(--orange)"></div></div></div>
-                        <div style="flex:1"><div style="font-size:8px;color:var(--muted);display:flex;justify-content:space-between"><span>Stress</span><span style="color:var(--red)">3/10</span></div><div style="width:100%;height:2px;background:var(--border);border-radius:1px;margin-top:3px"><div style="width:30%;height:100%;border-radius:1px;background:var(--red)"></div></div></div>
-                    </div>
-                    <div style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:8px;font-size:9px;color:var(--muted);min-height:30px">Finished the project early today...</div>
-                </div>
-            </div>
-            <div class="feat-content">
-                <h3>Journal that captures growth</h3>
-                <ul class="feat-list">
-                    <li><span class="ck">v</span> Mood tracking with energy and stress scores</li>
-                    <li><span class="ck">v</span> Gratitude, wins, and lessons learned</li>
-                    <li><span class="ck">v</span> Look back and see your progress</li>
-                    <li><span class="ck">v</span> Earn XP for every entry</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Gamification -->
-        <div class="feat-row">
-            <div class="feat-visual" style="text-align:center;padding:20px 16px">
-                <div style="width:64px;height:64px;border-radius:50%;background:var(--purple);display:inline-flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;box-shadow:0 0 24px rgba(108,92,231,0.25)">12</div>
-                <div style="font-size:18px;font-weight:800;margin-bottom:2px">Level 12</div>
-                <div style="font-size:10px;color:var(--muted);margin-bottom:12px">2,450 / 3,300 XP</div>
-                <div style="width:160px;height:4px;background:var(--border);border-radius:2px;margin:0 auto;overflow:hidden"><div style="width:74%;height:100%;border-radius:2px;background:var(--green)"></div></div>
-                <div style="display:flex;justify-content:center;gap:18px;margin-top:14px">
-                    <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:var(--orange)">12</div><div style="font-size:8px;color:var(--muted)">Streak</div></div>
-                    <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:var(--green)">340</div><div style="font-size:8px;color:var(--muted)">Coins</div></div>
-                    <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:var(--purple-light)">8</div><div style="font-size:8px;color:var(--muted)">Badges</div></div>
-                </div>
-            </div>
-            <div class="feat-content">
-                <h3>Gamification that motivates</h3>
-                <ul class="feat-list">
-                    <li><span class="ck">v</span> Earn XP for every completed action</li>
-                    <li><span class="ck">v</span> Level up from 1 to 100+</li>
-                    <li><span class="ck">v</span> Collect coins, diamonds, and badges</li>
-                    <li><span class="ck">v</span> Streak bonuses at 7, 30, and 100 days</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Focus -->
-        <div class="feat-row rtl">
-            <div class="feat-visual" style="text-align:center;padding:24px 16px">
-                <div style="position:relative;width:120px;height:120px;margin:0 auto 12px">
-                    <svg width="120" height="120" viewBox="0 0 120 120">
-                        <circle cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="6"/>
-                        <circle cx="60" cy="60" r="52" fill="none" stroke="var(--purple)" stroke-width="6" stroke-dasharray="248 327" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-                    </svg>
-                    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
-                        <div style="font-size:24px;font-weight:800;letter-spacing:2px">18:42</div>
-                        <div style="font-size:9px;color:var(--muted)">Stay focused</div>
-                    </div>
-                </div>
-                <div style="display:flex;gap:6px;justify-content:center">
-                    <div style="padding:5px 12px;border-radius:7px;background:var(--card);border:1px solid var(--border);font-size:10px;color:var(--muted)">25 min</div>
-                    <div style="padding:5px 12px;border-radius:7px;background:var(--purple);font-size:10px;color:#fff;font-weight:600">Start</div>
-                    <div style="padding:5px 12px;border-radius:7px;background:var(--card);border:1px solid var(--border);font-size:10px;color:var(--muted)">Skip</div>
-                </div>
-            </div>
-            <div class="feat-content">
-                <h3>Focus mode for deep work</h3>
-                <ul class="feat-list">
-                    <li><span class="ck">v</span> Pomodoro timer with custom durations</li>
-                    <li><span class="ck">v</span> Deep work mode for extended focus</li>
-                    <li><span class="ck">v</span> Automatic break reminders</li>
-                    <li><span class="ck">v</span> Track total focus time and sessions</li>
-                </ul>
+            <div class="step reveal">
+                <div class="step-num"><em>03</em></div>
+                <h3>Watch attributes climb</h3>
+                <p>Focus, discipline and strength level up as your streaks stack.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="cta">
+<section id="privacy" class="privacy">
     <div class="container">
-        <div class="cta-box">
-            <h2>Your future self will thank you</h2>
-            <p>Download Strive for free and start building better habits today.</p>
-            <div class="cta-btns">
-                <a href="download/Strive-v36.apk" download class="btn btn-green btn-lg">Download APK</a>
-                <a href="web/" class="btn btn-primary btn-lg">Try in Browser</a>
-            </div>
+        <div class="privacy-band reveal">
+            <span class="shield"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <h2>Your account. Your data.</h2>
+            <p>MySQL-backed sync with TLS, deletable anytime.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="container">
-        <div class="footer-inner">
-            <span>Copyright 2026 Nishant Dahal</span>
-            <div class="footer-links">
-                <a href="https://github.com/nishant007-afk/strive">GitHub</a>
-                <a href="web/">Live Demo</a>
-            </div>
-        </div>
+    <div class="container foot-inner">
+        <span class="foot-copy">&copy; 2026 Nishant Dahal</span>
+        <span class="ver-badge">v36</span>
+        <nav class="foot-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </nav>
     </div>
 </footer>
 
+<script>
+document.documentElement.classList.add('js');
+(function(){
+    'use strict';
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+        return;
+    }
+    var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
