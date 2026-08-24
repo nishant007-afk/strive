@@ -19,6 +19,7 @@
             --card:#14141C;
             --primary:#5B5CFF;
             --accent:#00E5A8;
+            --amber:#F5A623;
             --text:#FFFFFF;
             --muted:#9CA3AF;
             --border:rgba(255,255,255,.08);
@@ -34,7 +35,8 @@
         nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
         .nav-inner{display:flex;align-items:center;justify-content:space-between;height:56px}
         .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-        .brand-tile{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;box-shadow:0 4px 14px rgba(91,92,255,.4)}
+        .brand-tile{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;box-shadow:0 4px 14px rgba(91,92,255,.4);transition:transform .2s}
+        .brand:hover .brand-tile{transform:translateY(-1px)}
         .brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em}
         .nav-links{display:flex;align-items:center;gap:26px}
         .nav-links a:not(.btn){color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s}
@@ -43,20 +45,20 @@
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all .2s;white-space:nowrap}
         .btn-sm{padding:8px 16px;font-size:13px}
         .btn-solid{background:var(--primary);color:#fff;box-shadow:0 8px 24px rgba(91,92,255,.32)}
-        .btn-solid:hover{background:#4a4bef;transform:translateY(-1px)}
+        .btn-solid:hover{background:#4a4bef;transform:translateY(-1px);box-shadow:0 12px 30px rgba(91,92,255,.42)}
         .btn-ghost{background:transparent;color:var(--text);border-color:rgba(255,255,255,.14)}
-        .btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04)}
+        .btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04);transform:translateY(-1px)}
         .btn svg{flex-shrink:0}
 
-        .hero{position:relative;padding:96px 0 110px;overflow:hidden}
+        .hero{position:relative;padding:84px 0 96px;overflow:hidden}
         .hero::before{content:'';position:absolute;top:-220px;right:-160px;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(91,92,255,.14),transparent 65%);pointer-events:none}
         .hero::after{content:'';position:absolute;bottom:-320px;left:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,168,.07),transparent 65%);pointer-events:none}
-        .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
-        .hero h1{font-size:clamp(42px,6vw,56px);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:20px}
+        .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+        .hero h1{font-size:clamp(42px,6vw,56px);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:18px}
         .grad-text{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-        .hero-sub{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:30px}
+        .hero-sub{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:26px}
 
-        .hero-points{list-style:none;margin-bottom:34px;display:grid;gap:13px}
+        .hero-points{list-style:none;margin-bottom:30px;display:grid;gap:12px}
         .point{display:flex;align-items:flex-start;gap:11px;font-size:15px;font-weight:500;color:#D6D9E0}
         .point svg{flex-shrink:0;margin-top:5px;color:var(--accent)}
         .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -64,54 +66,65 @@
         .phone-wrap{position:relative;display:flex;justify-content:center}
         .phone-wrap::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(91,92,255,.22),transparent 70%);filter:blur(10px);pointer-events:none}
         .phone{position:relative;width:300px;border-radius:36px;border:1px solid rgba(255,255,255,.14);background:#0C0C13;padding:10px;box-shadow:0 48px 110px rgba(0,0,0,.6)}
-        .screen{border-radius:27px;border:1px solid var(--border);background:#0E0E16;padding:22px 16px 18px;overflow:hidden}
-        .scr-status{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;color:var(--muted);margin-bottom:16px}
+        .screen{border-radius:27px;border:1px solid var(--border);background:#0E0E16;padding:20px 16px 16px;overflow:hidden}
+        .scr-status{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;color:var(--muted);margin-bottom:14px}
         .scr-status .dots{display:flex;gap:3px}
         .scr-status .dots i{width:3px;height:3px;border-radius:50%;background:var(--muted)}
-        .scr-greet{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-        .scr-greet .who{display:flex;align-items:center;gap:10px;text-align:left}
-        .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
-        .scr-greet .hi{font-size:11px;color:var(--muted);line-height:1.3}
-        .scr-greet .name{font-size:14px;font-weight:700;line-height:1.3}
-        .bell{width:32px;height:32px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted)}
-        .lvl-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-        .lvl-pill{background:linear-gradient(135deg,rgba(91,92,255,.25),rgba(0,229,168,.18));border:1px solid rgba(91,92,255,.45);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700}
+        .mock-top{display:inline-flex;align-items:center;gap:7px}
+        .mini-tile{width:18px;height:18px;border-radius:6px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:9px;color:#fff;box-shadow:0 2px 8px rgba(91,92,255,.35);flex-shrink:0}
+        .mini-word{font-size:8.5px;font-weight:700;letter-spacing:.24em;color:#D6D9E0}
+        .scr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+        .bell{position:relative;width:30px;height:30px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+        .bell-dot{position:absolute;top:-2px;right:-2px;width:8px;height:8px;border-radius:50%;background:var(--amber);border:2px solid #0E0E16}
+        .scr-hi{font-size:15px;font-weight:600;line-height:1.3;margin-bottom:10px}
+        .lvl-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+        .lvl-big{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
         .rank-chip{background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.3);color:var(--accent);border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.04em}
-        .quest{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px 12px;margin-bottom:8px}
-        .q-dot{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(91,92,255,.14);color:#8f90ff}
-        .q-dot.g{background:rgba(0,229,168,.12);color:var(--accent)}
-        .q-txt{min-width:0;flex:1;text-align:left}
-        .q-title{font-size:11px;font-weight:600;line-height:1.35}
-        .q-sub{font-size:9px;color:var(--muted);line-height:1.35}
-        .xp-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;flex-shrink:0;background:rgba(0,229,168,.12);color:var(--accent)}
-        .xp-tag.done{background:rgba(255,255,255,.06);color:var(--muted)}
-        .scr-progress{margin-top:14px}
+        .scr-progress{margin-bottom:2px}
         .p-label{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:6px}
         .p-bar{height:4px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
-        .p-fill{height:100%;width:67%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+        .p-fill{height:100%;width:62%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+        .q-head{display:flex;align-items:center;justify-content:space-between;margin:15px 0 9px}
+        .q-label{font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--muted)}
+        .left-pill{font-size:9px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(245,166,35,.13);border:1px solid rgba(245,166,35,.4);color:#F5B04C}
+        .quest{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:9px 11px;margin-bottom:7px}
+        .q-circle{width:17px;height:17px;border-radius:50%;border:2px solid rgba(255,255,255,.28);flex-shrink:0}
+        .q-txt{min-width:0;flex:1;text-align:left}
+        .q-title{font-size:11px;font-weight:600;line-height:1.35}
+        .xp-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;flex-shrink:0;background:rgba(0,229,168,.12);color:var(--accent)}
+        .ghost-all{display:block;width:100%;margin-top:11px;padding:9px 0;text-align:center;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--muted);font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+        .ghost-all:hover{color:var(--text);border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04)}
 
-        section{padding:96px 0}
-        .split{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:84px;align-items:center}
+        section{padding:84px 0}
+        .split{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:72px;align-items:center}
         .split.flip .split-visual{order:-1}
-        .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-        .split h2{font-size:clamp(27px,3.6vw,35px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:22px}
-        .points{list-style:none;display:grid;gap:14px}
+        .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+        .split h2{font-size:clamp(27px,3.6vw,35px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:20px}
+        .points{list-style:none;display:grid;gap:13px}
         .point-lg{display:flex;align-items:flex-start;gap:12px;font-size:15.5px;font-weight:500;color:#D6D9E0;line-height:1.5}
         .point-lg svg{flex-shrink:0;margin-top:5px;color:var(--accent)}
 
-        .rail-wrap{position:relative;padding:44px 48px}
+        .rail-wrap{position:relative;padding:36px 40px}
         .rail-wrap::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(91,92,255,.16),transparent 70%);filter:blur(8px);pointer-events:none}
+        .rail-wrap .mock-top{position:relative;z-index:1;margin-bottom:18px}
         .rail{position:relative;padding-left:38px;max-width:360px}
         .rail-track{position:absolute;left:8px;top:10px;bottom:14px;width:2px;background:linear-gradient(180deg,var(--primary),var(--accent));border-radius:2px}
-        .stop{position:relative;padding-bottom:34px}
+        .stop{position:relative;padding-bottom:26px}
         .stop:last-child{padding-bottom:0}
         .stop-dot{position:absolute;left:-38px;top:3px;width:18px;height:18px;border-radius:50%;background:#0E0E16;border:2px solid var(--primary);box-shadow:0 0 0 4px rgba(91,92,255,.14)}
-        .stop-dot.a{border-color:var(--accent);box-shadow:0 0 0 4px rgba(0,229,168,.14)}
-        .stop-week{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
-        .stop-title{font-size:15px;font-weight:700;letter-spacing:-.01em;line-height:1.4}
-        .stop-sub{font-size:12.5px;color:var(--muted);line-height:1.5}
+        .stop-dot.done{background:var(--primary)}
+        .stop-dot.cur{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px rgba(0,229,168,.18)}
+        .stop-title{font-size:15px;font-weight:700;letter-spacing:.02em;line-height:1.4}
+        .stop-title.dim{color:var(--muted)}
+        .cur-chip{display:inline-block;margin-left:8px;vertical-align:2px;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.32);border-radius:999px;padding:2px 8px}
+        .prog-rows{position:relative;z-index:1;margin-top:20px;display:grid;gap:13px;max-width:360px}
+        .obar-row{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:#D6D9E0;margin-bottom:5px}
+        .obar-row em{font-style:normal;color:var(--accent);font-weight:700}
+        .obar-track{height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
+        .obar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent))}
 
-        .chat-screen{display:flex;flex-direction:column;gap:11px;padding-top:4px}
+        .chat-screen{display:flex;flex-direction:column;gap:11px;padding-top:2px}
+        .chat-screen .mock-top{margin-bottom:2px}
         .bubble{max-width:88%;padding:11px 15px;border-radius:16px;font-size:12.5px;line-height:1.55;text-align:left}
         .bubble.coach{align-self:flex-start;background:#1B1B26;border:1px solid var(--border);border-bottom-left-radius:6px}
         .bubble.coach b{color:var(--accent);font-weight:600}
@@ -119,23 +132,19 @@
         .chat-input{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px;border:1px solid var(--border);background:#0F0F17;border-radius:999px;padding:10px 16px;color:var(--muted);font-size:12px;text-align:left}
         .send-btn{width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
-        .outfit-card{position:relative;width:min(340px,100%);margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 40px 90px rgba(0,0,0,.55)}
-        .outfit-card::before{content:'';position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,168,.14),transparent 70%);pointer-events:none}
-        .oc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-        .oc-title{font-size:14px;font-weight:700;letter-spacing:-.01em}
-        .oc-time{font-size:10.5px;color:var(--muted);font-weight:500}
-        .oc-body{display:flex;align-items:center;gap:22px;margin-bottom:20px}
-        .photo-tile{width:86px;height:86px;border-radius:16px;background:linear-gradient(135deg,rgba(91,92,255,.28),rgba(0,229,168,.16));border:1px solid rgba(91,92,255,.4);display:flex;align-items:center;justify-content:center;color:#8f90ff;flex-shrink:0}
-        .ring{position:relative;width:104px;height:104px;flex-shrink:0}
-        .ring svg{width:100%;height:100%;display:block}
-        .ring-val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
-        .ring-num{font-size:26px;font-weight:800;letter-spacing:-.02em}
-        .ring-cap{font-size:8.5px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
-        .obars{display:grid;gap:12px}
-        .obar-row{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:#D6D9E0;margin-bottom:5px}
-        .obar-row em{font-style:normal;color:var(--muted);font-weight:600}
-        .obar-track{height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
-        .obar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+        .profile-card{position:relative;width:min(340px,100%);margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+        .profile-card::before{content:'';position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,168,.14),transparent 70%);pointer-events:none}
+        .pf-head{position:relative;z-index:1;display:flex;align-items:center;gap:14px;margin-top:16px}
+        .pf-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;flex-shrink:0}
+        .pf-name{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.35}
+        .pf-meta{font-size:12px;color:var(--muted);line-height:1.4}
+        .sec-label{position:relative;z-index:1;font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--muted);margin:18px 0 10px}
+        .pf-body{position:relative;z-index:1}
+        .obars{display:grid;gap:13px}
+        .chips{display:flex;flex-wrap:wrap;gap:8px}
+        .title-chip{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:5px 13px;border-radius:999px}
+        .title-chip.p{background:rgba(91,92,255,.14);border:1px solid rgba(91,92,255,.38);color:#A6A7FF}
+        .title-chip.g{background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.34);color:var(--accent)}
 
         .privacy{padding:0}
         .privacy-band{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px 32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;text-align:left}
@@ -143,7 +152,7 @@
         .privacy-band h2{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-right:2px}
         .privacy-band p{color:var(--muted);font-size:13.5px;flex:1;min-width:220px}
 
-        footer{border-top:1px solid var(--border);padding:28px 0;margin-top:96px}
+        footer{border-top:1px solid var(--border);padding:28px 0;margin-top:84px}
         .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
         .foot-copy{color:var(--muted);font-size:13px}
         .ver-badge{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--accent);background:rgba(0,229,168,.08);border:1px solid rgba(0,229,168,.28);border-radius:999px;padding:4px 12px}
@@ -157,26 +166,32 @@
         }
 
         @media(max-width:900px){
-            .hero{padding:72px 0 84px}
-            .hero-inner{grid-template-columns:1fr;gap:64px;text-align:center}
+            .hero{padding:64px 0 76px}
+            .hero-inner{grid-template-columns:1fr;gap:56px;text-align:center}
             .hero-sub{margin-left:auto;margin-right:auto}
-            .hero-points{text-align:left;max-width:400px;margin-left:auto;margin-right:auto;margin-bottom:30px}
+            .hero-points{text-align:left;max-width:400px;margin-left:auto;margin-right:auto;margin-bottom:26px}
             .hero-ctas{justify-content:center}
-            .split{grid-template-columns:1fr;gap:48px}
+            .split{grid-template-columns:1fr;gap:44px}
             .split.flip .split-visual{order:0}
-            section{padding:76px 0}
-            .rail-wrap{padding:36px 28px}
+            section{padding:64px 0}
+            .rail-wrap{padding:32px 26px}
             .nav-links a:not(.btn){display:none}
         }
         @media(max-width:600px){
             .container{padding:0 18px}
-            .hero{padding:56px 0 68px}
+            .hero{padding:48px 0 60px}
             .hero h1{font-size:38px}
             .hero-sub{font-size:15px}
             .btn{padding:11px 20px;font-size:13px}
-            .phone{width:270px}
-            .privacy-band{padding:20px 20px;flex-direction:column;align-items:flex-start}
-            footer{margin-top:76px}
+            section{padding:56px 0}
+            .phone{width:260px}
+            .screen{padding:18px 14px 14px}
+            .rail-wrap{padding:26px 18px}
+            .profile-card{padding:20px}
+            .bubble{max-width:94%}
+            .privacy-band{padding:20px;flex-direction:column;align-items:flex-start}
+            footer{margin-top:60px}
+            .foot-inner{flex-direction:column;justify-content:center;text-align:center}
         }
     </style>
 </head>
@@ -205,7 +220,7 @@
             <ul class="hero-points">
                 <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Programs that adapt to you</span></li>
                 <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Real screen-time insights</span></li>
-                <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Photo-based outfit ratings</span></li>
+                <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Daily quests worth XP</span></li>
                 <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Coach that knows your stats</span></li>
             </ul>
             <div class="hero-ctas">
@@ -218,39 +233,42 @@
         </div>
 
         <div class="phone-wrap">
-            <div class="phone" role="img" aria-label="Strive app Today screen preview">
+            <div class="phone" role="img" aria-label="Strive app Today screen preview for Alex, Level 12">
                 <div class="screen">
                     <div class="scr-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
-                    <div class="scr-greet">
-                        <div class="who">
-                            <span class="avatar">N</span>
-                            <span><span class="hi">Good morning,</span><br><span class="name">Nishant</span></span>
-                        </div>
-                        <span class="bell"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+                    <div class="scr-top">
+                        <span class="mock-top"><span class="mini-tile">S</span><span class="mini-word">STRIVE</span></span>
+                        <span class="bell"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><i class="bell-dot"></i></span>
                     </div>
+                    <div class="scr-hi">Hi Alex</div>
                     <div class="lvl-row">
-                        <span class="lvl-pill">Level 12</span>
+                        <span class="lvl-big">Level 12</span>
                         <span class="rank-chip">Gold II</span>
                     </div>
-                    <div class="quest">
-                        <span class="q-dot g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
-                        <span class="q-txt"><span class="q-title">Deep study block</span><br><span class="q-sub">45 min focused revision</span></span>
-                        <span class="xp-tag">+40 XP</span>
-                    </div>
-                    <div class="quest">
-                        <span class="q-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M20.2 20.2 12 12l8.2-8.2"/><path d="m16 7 1-5 5 1-4 4"/></svg></span>
-                        <span class="q-txt"><span class="q-title">Push day workout</span><br><span class="q-sub">Fitness program · Week 4</span></span>
-                        <span class="xp-tag">+60 XP</span>
-                    </div>
-                    <div class="quest">
-                        <span class="q-dot g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
-                        <span class="q-txt"><span class="q-title">Lights out by 11 PM</span><br><span class="q-sub">Sleep quest · streak 6 days</span></span>
-                        <span class="xp-tag done">Done</span>
-                    </div>
                     <div class="scr-progress">
-                        <div class="p-label"><span>Daily quests</span><span>2 / 3 complete</span></div>
+                        <div class="p-label"><span>XP to next level</span><span>62%</span></div>
                         <div class="p-bar"><div class="p-fill"></div></div>
                     </div>
+                    <div class="q-head">
+                        <span class="q-label">TODAY&rsquo;S QUESTS</span>
+                        <span class="left-pill">3 left</span>
+                    </div>
+                    <div class="quest">
+                        <span class="q-circle"></span>
+                        <span class="q-txt"><span class="q-title">Finish DBMS Chapter</span></span>
+                        <span class="xp-tag">+40</span>
+                    </div>
+                    <div class="quest">
+                        <span class="q-circle"></span>
+                        <span class="q-txt"><span class="q-title">Complete workout</span></span>
+                        <span class="xp-tag">+30</span>
+                    </div>
+                    <div class="quest">
+                        <span class="q-circle"></span>
+                        <span class="q-txt"><span class="q-title">Start one conversation</span></span>
+                        <span class="xp-tag">+20</span>
+                    </div>
+                    <span class="ghost-all">All quests</span>
                 </div>
             </div>
         </div>
@@ -270,32 +288,31 @@
             </ul>
         </div>
         <div class="split-visual">
-            <div class="rail-wrap" role="img" aria-label="Sample six week journey timeline from setup to rank up">
+            <div class="rail-wrap" role="img" aria-label="Strive journey stages START, Foundation, Build with active program progress">
+                <div class="mock-top"><span class="mini-tile">S</span><span class="mini-word">STRIVE</span></div>
                 <div class="rail">
                     <span class="rail-track"></span>
                     <div class="stop">
-                        <span class="stop-dot"></span>
-                        <div class="stop-week">Day 0</div>
-                        <div class="stop-title">Pick your focus areas</div>
-                        <div class="stop-sub">Academics, fitness, sleep, style</div>
+                        <span class="stop-dot done"></span>
+                        <div class="stop-title">START</div>
+                    </div>
+                    <div class="stop">
+                        <span class="stop-dot cur"></span>
+                        <div class="stop-title">Foundation<span class="cur-chip">Current</span></div>
                     </div>
                     <div class="stop">
                         <span class="stop-dot"></span>
-                        <div class="stop-week">Week 1</div>
-                        <div class="stop-title">Program unlocks</div>
-                        <div class="stop-sub">Daily missions calibrated to your schedule</div>
+                        <div class="stop-title dim">Build</div>
                     </div>
-                    <div class="stop">
-                        <span class="stop-dot"></span>
-                        <div class="stop-week">Week 3</div>
-                        <div class="stop-title">Attributes climbing</div>
-                        <div class="stop-sub">Focus 24 &middot; Discipline 31 &middot; Strength 19</div>
+                </div>
+                <div class="prog-rows">
+                    <div class="obar">
+                        <div class="obar-row"><span>Academic Comeback</span><em>38%</em></div>
+                        <div class="obar-track"><div class="obar-fill" style="width:38%"></div></div>
                     </div>
-                    <div class="stop">
-                        <span class="stop-dot a"></span>
-                        <div class="stop-week">Week 6</div>
-                        <div class="stop-title">Rank up</div>
-                        <div class="stop-sub">Gold I to Gold II, streak intact</div>
+                    <div class="obar">
+                        <div class="obar-row"><span>Digital Reset</span><em>12%</em></div>
+                        <div class="obar-track"><div class="obar-fill" style="width:12%"></div></div>
                     </div>
                 </div>
             </div>
@@ -317,14 +334,14 @@
         </div>
         <div class="split-visual">
             <div class="phone-wrap">
-                <div class="phone" role="img" aria-label="Strive coach conversation preview">
+                <div class="phone" role="img" aria-label="Strive coach conversation preview about procrastination">
                     <div class="screen">
                         <div class="scr-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
                         <div class="chat-screen" aria-label="Sample coach conversation">
-                            <div class="bubble coach">Your study completion drops after <b>8 PM</b>.</div>
-                            <div class="bubble user">Yeah&hellip; evenings get messy.</div>
-                            <div class="bubble coach">Move one quest to a <b>7 AM block</b> and I will track the streak. Sleep target stays 11 PM.</div>
-                            <div class="chat-input"><span>Message your coach&hellip;</span><span class="send-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span></div>
+                            <div class="mock-top"><span class="mini-tile">S</span><span class="mini-word">STRIVE</span></div>
+                            <div class="bubble user">why do I keep procrastinating?</div>
+                            <div class="bubble coach">Your academics XP is <b>0</b> this week while social media averaged <b>3h</b> daily. Move one study block before noon.</div>
+                            <div class="chat-input"><span>Ask your coach</span><span class="send-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -336,49 +353,41 @@
 <section id="tools">
     <div class="container split reveal">
         <div>
-            <span class="eyebrow">Data</span>
-            <h2>Tools that use real data</h2>
+            <span class="eyebrow">Profile</span>
+            <h2>Progress you can see</h2>
             <ul class="points">
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Outfit Check from a single photo</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Wardrobe combos by occasion</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>GPA and exam countdowns</span></li>
+                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Attributes climb with every quest</span></li>
+                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Earn titles like Committed and Finisher</span></li>
+                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Ranks from Bronze up the ladder</span></li>
                 <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Weekly review every Monday</span></li>
             </ul>
         </div>
         <div class="split-visual">
-            <div class="outfit-card" role="img" aria-label="Outfit Check result preview with overall score 78 and subscores">
-                <div class="oc-head">
-                    <span class="oc-title">Outfit Check</span>
-                    <span class="oc-time">Today &middot; 8:12 AM</span>
-                </div>
-                <div class="oc-body">
-                    <span class="photo-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-                    <span class="ring">
-                        <svg viewBox="0 0 120 120" aria-hidden="true">
-                            <defs>
-                                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0" stop-color="#5B5CFF"/>
-                                    <stop offset="1" stop-color="#00E5A8"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
-                            <circle cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="71.9" transform="rotate(-90 60 60)"/>
-                        </svg>
-                        <span class="ring-val"><span class="ring-num">78</span><span class="ring-cap">SCORE</span></span>
+            <div class="profile-card" role="img" aria-label="Strive profile preview for Alex, Level 14 Gold I, attributes Confidence Lv8 and Academics Lv6, titles Committed and Finisher">
+                <div class="mock-top"><span class="mini-tile">S</span><span class="mini-word">STRIVE</span></div>
+                <div class="pf-head">
+                    <span class="pf-avatar">A</span>
+                    <span class="pf-id">
+                        <span class="pf-name">Alex</span><br>
+                        <span class="pf-meta">Level 14 &middot; Gold I</span>
                     </span>
                 </div>
-                <div class="obars">
-                    <div class="obar">
-                        <div class="obar-row"><span>Fit</span><em>82</em></div>
-                        <div class="obar-track"><div class="obar-fill" style="width:82%"></div></div>
+                <div class="pf-body">
+                    <div class="sec-label">ATTRIBUTES</div>
+                    <div class="obars">
+                        <div class="obar">
+                            <div class="obar-row"><span>Confidence</span><em>Lv8</em></div>
+                            <div class="obar-track"><div class="obar-fill" style="width:80%"></div></div>
+                        </div>
+                        <div class="obar">
+                            <div class="obar-row"><span>Academics</span><em>Lv6</em></div>
+                            <div class="obar-track"><div class="obar-fill" style="width:60%"></div></div>
+                        </div>
                     </div>
-                    <div class="obar">
-                        <div class="obar-row"><span>Colors</span><em>74</em></div>
-                        <div class="obar-track"><div class="obar-fill" style="width:74%"></div></div>
-                    </div>
-                    <div class="obar">
-                        <div class="obar-row"><span>Shoes</span><em>68</em></div>
-                        <div class="obar-track"><div class="obar-fill" style="width:68%"></div></div>
+                    <div class="sec-label">TITLES</div>
+                    <div class="chips">
+                        <span class="title-chip p">Committed</span>
+                        <span class="title-chip g">Finisher</span>
                     </div>
                 </div>
             </div>
@@ -398,7 +407,7 @@
 
 <footer>
     <div class="container foot-inner">
-        <span class="foot-copy">&copy; 2026 Nishant Dahal</span>
+        <span class="foot-copy">&copy; 2026 Strive</span>
         <span class="ver-badge">v45</span>
     </div>
 </footer>
@@ -423,12 +432,3 @@ document.documentElement.classList.add('js');
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
