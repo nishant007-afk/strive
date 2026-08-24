@@ -50,15 +50,15 @@
         .btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04);transform:translateY(-1px)}
         .btn svg{flex-shrink:0}
 
-        .hero{position:relative;padding:84px 0 96px;overflow:hidden}
+        .hero{position:relative;padding:56px 0 64px;overflow:hidden}
         
         
-        .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+        .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
         .hero h1{font-size:clamp(42px,6vw,56px);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:18px}
         .grad-text{color:var(--text)}
-        .hero-sub{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:26px}
+        .hero-sub{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:18px}
 
-        .hero-points{list-style:none;margin-bottom:30px;display:grid;gap:12px}
+        .hero-points{list-style:none;margin-bottom:20px;display:grid;gap:12px}
         .point{display:flex;align-items:flex-start;gap:11px;font-size:15px;font-weight:500;color:#D6D9E0}
         .point svg{flex-shrink:0;margin-top:5px;color:var(--accent)}
         .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -95,11 +95,11 @@
         .ghost-all{display:block;width:100%;margin-top:11px;padding:9px 0;text-align:center;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--muted);font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
         .ghost-all:hover{color:var(--text);border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04)}
 
-        section{padding:84px 0}
-        .split{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:72px;align-items:center}
+        section{padding:56px 0}
+        .split{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:48px;align-items:center}
         .split.flip .split-visual{order:-1}
         .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-        .split h2{font-size:clamp(27px,3.6vw,35px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:20px}
+        $118px}
         .points{list-style:none;display:grid;gap:13px}
         .point-lg{display:flex;align-items:flex-start;gap:12px;font-size:15.5px;font-weight:500;color:#D6D9E0;line-height:1.5}
         .point-lg svg{flex-shrink:0;margin-top:5px;color:var(--accent)}
@@ -152,7 +152,7 @@
         .privacy-band h2{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-right:2px}
         .privacy-band p{color:var(--muted);font-size:13.5px;flex:1;min-width:220px}
 
-        footer{border-top:1px solid var(--border);padding:28px 0;margin-top:84px}
+        footer{border-top:1px solid var(--border);padding:28px 0;margin-top:48px}
         .foot-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
         .foot-copy{color:var(--muted);font-size:13px}
         .ver-badge{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--accent);background:rgba(0,229,168,.08);border:1px solid rgba(0,229,168,.28);border-radius:999px;padding:4px 12px}
@@ -166,14 +166,14 @@
         }
 
         @media(max-width:900px){
-            .hero{padding:64px 0 76px}
-            .hero-inner{grid-template-columns:1fr;gap:56px;text-align:center}
+            .hero{padding:44px 0 52px}
+            .hero-inner{grid-template-columns:1fr;gap:40px;text-align:center}
             .hero-sub{margin-left:auto;margin-right:auto}
-            .hero-points{text-align:left;max-width:400px;margin-left:auto;margin-right:auto;margin-bottom:26px}
+            .hero-points{text-align:left;max-width:400px;margin-left:auto;margin-right:auto;margin-bottom:18px}
             .hero-ctas{justify-content:center}
-            .split{grid-template-columns:1fr;gap:44px}
+            .split{grid-template-columns:1fr;gap:28px}
             .split.flip .split-visual{order:0}
-            section{padding:64px 0}
+            section{padding:44px 0}
             .rail-wrap{padding:32px 26px}
             .nav-links a:not(.btn){display:none}
         }
@@ -190,7 +190,7 @@
             .profile-card{padding:20px}
             .bubble{max-width:94%}
             .privacy-band{padding:20px;flex-direction:column;align-items:flex-start}
-            footer{margin-top:60px}
+            footer{margin-top:40px}
             .foot-inner{flex-direction:column;justify-content:center;text-align:center}
         }
     </style>
@@ -434,6 +434,8 @@ document.documentElement.classList.add('js');
 
 </body>
 </html>
+
+
 
 
 
