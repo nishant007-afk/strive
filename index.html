@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strive</title>
+    <title>Strive — Level up your life</title>
     <meta name="description" content="Strive is an RPG-style app for students: programs, quests, XP, ranks and a real AI coach for better grades, confidence, fitness, sleep and style.">
     <meta property="og:title" content="Strive — Level up your life.">
     <meta property="og:description" content="Programs, quests and real coaching for students who want better grades, confidence, fitness, sleep and style.">
@@ -11,473 +11,1467 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#0A0A0F;
-            --card:#14141C;
-            --primary:#5B5CFF;
-            --accent:#00E5A8;
-            --amber:#F5A623;
-            --text:#FFFFFF;
-            --muted:#9CA3AF;
-            --border:rgba(255,255,255,.08);
-        }
-        @media(prefers-reduced-motion:no-preference){
-            html{scroll-behavior:smooth}
-        }
-        body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-        ::selection{background:rgba(91,92,255,.45)}
-        a:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:6px}
-        .container{max-width:1120px;margin:0 auto;padding:0 24px}
-
-        nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:56px}
-        .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-        .brand-tile{width:28px;height:28px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;box-shadow:0 4px 14px rgba(91,92,255,.4);transition:transform .2s}
-        .brand:hover .brand-tile{transform:translateY(-1px)}
-        .brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em}
-        .nav-links{display:flex;align-items:center;gap:26px}
-        .nav-links a:not(.btn){color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s}
-        .nav-links a:not(.btn):hover{color:var(--text)}
-
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:12px;font-family:inherit;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all .2s;white-space:nowrap}
-        .btn-sm{padding:8px 16px;font-size:13px}
-        .btn-solid{background:var(--primary);color:#fff;box-shadow:0 8px 24px rgba(91,92,255,.32)}
-        .btn-solid:hover{background:#4a4bef;transform:translateY(-1px);box-shadow:0 12px 30px rgba(91,92,255,.42)}
-        .btn-ghost{background:transparent;color:var(--text);border-color:rgba(255,255,255,.14)}
-        .btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04);transform:translateY(-1px)}
-        .btn svg{flex-shrink:0}
-
-        .hero{position:relative;padding:56px 0 64px;overflow:hidden}
-        
-        
-        .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
-        $160px);font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-bottom:18px}
-        .grad-text{color:var(--text)}
-        .hero-sub{color:var(--muted);font-size:18px;max-width:480px;margin-bottom:18px}
-
-        .hero-points{list-style:none;margin-bottom:20px;display:grid;gap:12px}
-        .point{display:flex;align-items:flex-start;gap:11px;font-size:15px;font-weight:500;color:#D6D9E0}
-        .point svg{flex-shrink:0;margin-top:5px;color:var(--accent)}
-        .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-
-        .phone-wrap{position:relative;display:flex;justify-content:center}
-        
-        .phone{position:relative;width:320px;aspect-ratio:9/18;display:flex;border-radius:36px;border:1px solid rgba(255,255,255,.14);background:#0C0C13;padding:10px;box-shadow:0 48px 110px rgba(0,0,0,.6)}
-        .screen{flex:1;display:flex;flex-direction:column;border-radius:27px;border:1px solid var(--border);background:#0E0E16;padding:20px 16px 16px;overflow:hidden}
-        .scr-status{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;color:var(--muted);margin-bottom:14px}
-        .scr-status .dots{display:flex;gap:3px}
-        .scr-status .dots i{width:3px;height:3px;border-radius:50%;background:var(--muted)}
-        .mock-top{display:inline-flex;align-items:center;gap:7px}
-        .mini-tile{width:18px;height:18px;border-radius:6px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:9px;color:#fff;box-shadow:0 2px 8px rgba(91,92,255,.35);flex-shrink:0}
-        .mini-word{font-size:8.5px;font-weight:700;letter-spacing:.24em;color:#D6D9E0}
-        .scr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-        .bell{position:relative;width:30px;height:30px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted)}
-        .bell-dot{position:absolute;top:-2px;right:-2px;width:8px;height:8px;border-radius:50%;background:var(--amber);border:2px solid #0E0E16}
-        .scr-hi{font-size:15px;font-weight:600;line-height:1.3;margin-bottom:10px}
-        .lvl-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
-        .lvl-big{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
-        .rank-chip{background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.3);color:var(--accent);border-radius:999px;padding:4px 10px;font-size:10px;font-weight:700;letter-spacing:.04em}
-        .scr-progress{margin-bottom:2px}
-        .p-label{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:6px}
-        .p-bar{height:4px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
-        .p-fill{height:100%;width:62%;border-radius:99px;background:var(--primary)}
-        .q-head{display:flex;align-items:center;justify-content:space-between;margin:15px 0 9px}
-        .q-label{font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--muted)}
-        .left-pill{font-size:9px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(245,166,35,.13);border:1px solid rgba(245,166,35,.4);color:#F5B04C}
-        .quest{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:9px 11px;margin-bottom:7px}
-        .q-circle{width:17px;height:17px;border-radius:50%;border:2px solid rgba(255,255,255,.28);flex-shrink:0}
-        .q-txt{min-width:0;flex:1;text-align:left}
-        .q-title{font-size:11px;font-weight:600;line-height:1.35}
-        .xp-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;flex-shrink:0;background:rgba(0,229,168,.12);color:var(--accent)}
-        .ghost-all{display:block;width:100%;margin-top:11px;padding:9px 0;text-align:center;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--muted);font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
-        .ghost-all:hover{color:var(--text);border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04)}
-
-        section{padding:56px 0}
-        .split{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:26px;align-items:center}
-        .split.flip .split-visual{order:-1}
-        .eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-        $138px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:18px}
-        $126px}
-        $117.5px;font-weight:500;color:#D6D9E0;line-height:1.5}
-.points{list-style:none;display:grid;gap:26px}
-        .point-lg{display:flex;align-items:flex-start;gap:13px;font-size:17.5px;font-weight:500;color:#D6D9E0;line-height:1.5}
-                .point-lg svg{flex-shrink:0;margin-top:5px;color:var(--accent)}
-
-        .rail-wrap{display:flex;flex-direction:column;gap:16px;padding-top:14px}
-        
-        .rail-wrap .mock-top{position:relative;z-index:1;margin-bottom:18px}
-        .rail{position:relative;padding-left:38px;max-width:360px}
-        .rail-track{position:absolute;left:8px;top:10px;bottom:14px;width:2px;background:var(--primary);border-radius:2px}
-        .stop{position:relative;padding-bottom:26px}
-        .stop:last-child{padding-bottom:0}
-        .stop-dot{position:absolute;left:-38px;top:3px;width:18px;height:18px;border-radius:50%;background:#0E0E16;border:2px solid var(--primary);box-shadow:0 0 0 4px rgba(91,92,255,.14)}
-        .stop-dot.done{background:var(--primary)}
-        .stop-dot.cur{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px rgba(0,229,168,.18)}
-        .stop-title{font-size:15px;font-weight:700;letter-spacing:.02em;line-height:1.4}
-        .stop-title.dim{color:var(--muted)}
-        .cur-chip{display:inline-block;margin-left:8px;vertical-align:2px;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.32);border-radius:999px;padding:2px 8px}
-        .prog-rows{position:relative;z-index:1;margin-top:20px;display:grid;gap:13px;max-width:360px}
-        .obar-row{display:flex;justify-content:space-between;font-size:11px;font-weight:600;color:#D6D9E0;margin-bottom:5px}
-        .obar-row em{font-style:normal;color:var(--accent);font-weight:700}
-        .obar-track{height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
-        .obar-fill{height:100%;border-radius:99px;background:var(--primary)}
-
-        .chat-screen{display:flex;flex-direction:column;gap:11px;padding-top:2px}
-        .chat-screen .mock-top{margin-bottom:2px}
-        .bubble{max-width:88%;padding:11px 15px;border-radius:16px;font-size:12.5px;line-height:1.55;text-align:left}
-        .bubble.coach{align-self:flex-start;background:#1B1B26;border:1px solid var(--border);border-bottom-left-radius:6px}
-        .bubble.coach b{color:var(--accent);font-weight:600}
-        .bubble.user{align-self:flex-end;background:rgba(91,92,255,.18);border:1px solid rgba(91,92,255,.38);border-bottom-right-radius:6px}
-        .chat-input{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px;border:1px solid var(--border);background:#0F0F17;border-radius:999px;padding:10px 16px;color:var(--muted);font-size:12px;text-align:left}
-        .send-btn{width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-
-        4px;box-shadow:0 40px 90px rgba(0,0,0,.55)}
-        
-        .pf-head{position:relative;z-index:1;display:flex;align-items:center;gap:14px;margin-top:16px}
-        .pf-avatar{width:52px;height:52px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;flex-shrink:0}
-        .pf-name{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.35}
-        .pf-meta{font-size:12px;color:var(--muted);line-height:1.4}
-        .sec-label{position:relative;z-index:1;font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--muted);margin:18px 0 10px}
-        .pf-body{position:relative;z-index:1}
-        .obars{display:grid;gap:13px}
-        .chips{display:flex;flex-wrap:wrap;gap:8px}
-        .title-chip{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:5px 13px;border-radius:999px}
-        .title-chip.p{background:rgba(91,92,255,.14);border:1px solid rgba(91,92,255,.38);color:#A6A7FF}
-        .title-chip.g{background:rgba(0,229,168,.1);border:1px solid rgba(0,229,168,.34);color:var(--accent)}
-
-        .privacy{padding:0}
-        .shield-sm{width:40px;height:40px;border-radius:12px;border:1px solid rgba(0,229,168,.35);background:rgba(0,229,168,.09);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-
-        footer{border-top:1px solid var(--border);padding:44px 0 26px;margin-top:56px}
-        .foot-inner{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
-        .foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-        .foot-tag{color:var(--muted);font-size:14px;line-height:1.6;max-width:300px}
-        .foot-h{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:14px}
-        .foot-links{list-style:none;display:grid;gap:10px}
-        .foot-links a{color:var(--muted);font-size:14px;text-decoration:none;transition:color .2s}
-        .foot-links a:hover{color:var(--text)}
-        .foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--border);margin-top:36px;padding-top:20px}
-        .foot-copy{color:var(--muted);font-size:13px}
-
-        @media(prefers-reduced-motion:no-preference){
-            .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-            .js .reveal.in{opacity:1;transform:none}
-        }
-        @media(prefers-reduced-motion:reduce){
-            *,*::before,*::after{animation:none!important;transition:none!important}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        @media(max-width:900px){
-            .hero{padding:44px 0 52px}
-            .hero-inner{grid-template-columns:1fr;gap:40px;text-align:center}
-            .split{grid-template-columns:1fr;gap:16px}
-            .hero-sub{margin-left:auto;margin-right:auto}
-            .hero-points{text-align:left;max-width:400px;margin-left:auto;margin-right:auto;margin-bottom:18px}
-            .hero-ctas{justify-content:center}
+        :root {
+            --obsidian: #09090B;
+            --obsidian-light: #0F0F12;
+            --obsidian-card: #18181B;
+            --primary: #6366F1;
+            --primary-glow: rgba(99, 102, 241, 0.3);
+            --accent: #10B981;
+            --accent-glow: rgba(16, 185, 129, 0.25);
+            --amber: #F59E0B;
+            --white: #FAFAFA;
+            --gray-50: #F9FAFB;
+            --gray-200: #E5E7EB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #52525B;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(15, 15, 18, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        @media(prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
             }
-            .split.flip .split-visual{order:0}
-            section{padding:44px 0}
-                        .nav-links a:not(.btn){display:none}
         }
-        @media(max-width:600px){
-            .container{padding:0 18px}
-            .hero{padding:48px 0 60px}
-            .hero h1{font-size:38px}
-            .hero-sub{font-size:15px}
-            .btn{padding:11px 20px;font-size:13px}
-            section{padding:56px 0}
-            .phone{width:292px}
-            .screen{padding:18px 14px 14px}
-            .bubble{max-width:94%}
-            footer{margin-top:40px}
-            .foot-inner{grid-template-columns:1fr;gap:26px}
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--obsidian);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            position: relative;
         }
-    .phone{zoom:1}
-        .screen{padding:16px 14px}
-        .scr-hi{font-size:20px;margin-bottom:10px}
-        .lvl-row{margin-bottom:10px}
-        .scr-progress{margin-bottom:12px}
-        .quest{padding:9px 0}
-        .ghost-all{margin-top:8px;padding:8px 0;font-size:10.5px}
-        .rail-wrap{gap:11px;padding-top:6px}
-        .prog-rows{gap:10px}
-        .profile-card{gap:9px;padding-top:4px}
-        .pf-head{margin-bottom:2px}
-        .bubble{margin:7px 0}
-        .chat-input{margin-top:6px}
-</style>
+
+        /* Background gradient effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        ::selection {
+            background: var(--primary-glow);
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphic Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            background: rgba(9, 9, 11, 0.85);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--white);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .brand:hover {
+            transform: translateY(-1px);
+        }
+
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px var(--primary-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .brand-icon svg {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: -0.01em;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Premium Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: -0.01em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #8B5CF6);
+            color: var(--white);
+            box-shadow: 0 8px 24px var(--primary-glow), 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px var(--primary-glow), 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border: 1px solid var(--border-medium);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-medium);
+            transform: translateY(-2px);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px 6px 6px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-badge-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-badge-icon svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--white), var(--gray-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--gray-400);
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-features {
+            list-style: none;
+            display: grid;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: var(--gray-200);
+            font-weight: 500;
+        }
+
+        .hero-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .hero-feature-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Phone Mockup with Advanced Animations */
+        .phone-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 340px;
+            height: 680px;
+            background: linear-gradient(135deg, #1A1A1D, #0F0F12);
+            border-radius: 48px;
+            padding: 14px;
+            box-shadow:
+                0 40px 80px rgba(0, 0, 0, 0.5),
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            animation: float 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateY(-5deg); }
+            50% { transform: translateY(-20px) rotateY(5deg); }
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: var(--obsidian);
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #0F0F14 0%, #09090B 100%);
+            border-radius: 36px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            padding: 48px 20px 20px;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            margin-bottom: 32px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-500);
+        }
+
+        .status-indicators {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .status-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--gray-500);
+            border-radius: 50%;
+        }
+
+        /* App Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            padding: 0 8px;
+        }
+
+        .app-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), #8B5CF6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .app-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .app-title {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--gray-400);
+        }
+
+        .notification-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .notification-btn svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gray-400);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 10px;
+            height: 10px;
+            background: var(--amber);
+            border: 2px solid var(--obsidian);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        /* Greeting */
+        .greeting {
+            padding: 0 8px;
+            margin-bottom: 24px;
+        }
+
+        .greeting-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        /* Level Display */
+        .level-display {
+            padding: 0 8px;
+            margin-bottom: 24px;
+        }
+
+        .level-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .level-number {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--white), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rank-badge {
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        /* XP Progress */
+        .xp-progress {
+            margin-bottom: 4px;
+        }
+
+        .xp-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .xp-label-value {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, var(--primary), #8B5CF6);
+            border-radius: 999px;
+            position: relative;
+            overflow: hidden;
+            animation: progressGlow 2s ease-in-out infinite;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressShine 2s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        @keyframes progressGlow {
+            0%, 100% { box-shadow: 0 0 10px var(--primary-glow); }
+            50% { box-shadow: 0 0 20px var(--primary-glow); }
+        }
+
+        /* Quests Section */
+        .quests-section {
+            padding: 0 8px;
+        }
+
+        .quests-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .quests-title {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: var(--gray-500);
+        }
+
+        .quests-remaining {
+            padding: 4px 10px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--amber);
+        }
+
+        .quest-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quest-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quest-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--border-medium);
+            transform: translateX(4px);
+        }
+
+        .quest-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gray-600);
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .quest-item:hover .quest-checkbox {
+            border-color: var(--primary);
+        }
+
+        .quest-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .quest-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .quest-xp {
+            padding: 4px 10px;
+            background: rgba(16, 185, 129, 0.12);
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* Features Grid Section */
+        .features-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .section-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--gray-400);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            position: relative;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-medium);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--primary);
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: iconBounce 0.6s ease-in-out;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--gray-400);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .cta-card {
+            position: relative;
+            padding: 80px 60px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 32px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .cta-description {
+            font-size: 18px;
+            color: var(--gray-400);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 60px 0 32px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--gray-500);
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .phone-mockup {
+                margin: 0 auto;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .features-section,
+            .cta-section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-inner {
+                height: 64px;
+                padding: 0 20px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-link:not(.btn) {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .phone-mockup {
+                width: 300px;
+                height: 600px;
+                border-radius: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-card {
+                padding: 60px 32px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .features-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-ctas {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .phone-mockup {
+                width: 280px;
+                height: 560px;
+            }
+        }
+
+        /* Scroll animations */
+        @media(prefers-reduced-motion: no-preference) {
+            .fade-in {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <div class="container nav-inner">
+<nav id="nav">
+    <div class="nav-inner">
         <a href="#" class="brand" aria-label="Strive home">
-            <span class="brand-tile">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>
-            </span>
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5"/>
+                </svg>
+            </div>
             <span class="brand-name">Strive</span>
         </a>
         <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#how">How</a>
-            <a href="#footer">Privacy</a>
-            <a href="download/Strive-v51.apk" download class="btn btn-solid btn-sm">Download</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#cta" class="nav-link">Get Started</a>
+            <a href="download/Strive-v52.apk" download class="btn btn-primary">Download APK</a>
         </div>
     </div>
 </nav>
 
-<header class="hero">
-    <div class="container hero-inner">
-        <div>
-            <h1>Level up<br>your <span class="grad-text">life.</span></h1>
-            <p class="hero-sub">Programs, quests and real coaching for students who want better grades, confidence, fitness, sleep and style.</p>
-            <ul class="hero-points">
-                <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Programs that adapt to you</span></li>
-                <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Real screen-time insights</span></li>
-                <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Daily quests worth XP</span></li>
-                <li class="point"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Coach that knows your stats</span></li>
-            </ul>
-            <div class="hero-ctas">
-                <a href="download/Strive-v51.apk" download class="btn btn-solid">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Download APK
-                </a>
-                <a href="#features" class="btn btn-ghost">Explore features</a>
-            </div>
-        </div>
-
-        <div class="phone-wrap">
-            <div class="phone" role="img" aria-label="Strive app Today screen preview for Alex, Level 12">
-                <div class="screen">
-                    <div class="scr-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
-                    <div class="scr-top">
-                        <span class="mock-top"><span class="mini-tile"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="mini-word">STRIVE</span></span>
-                        <span class="bell"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><i class="bell-dot"></i></span>
-                    </div>
-                    <div class="scr-hi">Hi Alex</div>
-                    <div class="lvl-row">
-                        <span class="lvl-big">Level 12</span>
-                        <span class="rank-chip">Gold II</span>
-                    </div>
-                    <div class="scr-progress">
-                        <div class="p-label"><span>XP to next level</span><span>62%</span></div>
-                        <div class="p-bar"><div class="p-fill"></div></div>
-                    </div>
-                    <div class="q-head">
-                        <span class="q-label">TODAY&rsquo;S QUESTS</span>
-                        <span class="left-pill">3 left</span>
-                    </div>
-                    <div class="quest">
-                        <span class="q-circle"></span>
-                        <span class="q-txt"><span class="q-title">Deep study session</span></span>
-                        <span class="xp-tag">+40</span>
-                    </div>
-                    <div class="quest">
-                        <span class="q-circle"></span>
-                        <span class="q-txt"><span class="q-title">Complete workout</span></span>
-                        <span class="xp-tag">+30</span>
-                    </div>
-                    <div class="quest">
-                        <span class="q-circle"></span>
-                        <span class="q-txt"><span class="q-title">Start one conversation</span></span>
-                        <span class="xp-tag">+20</span>
-                    </div>
-                    <span class="ghost-all">All quests</span>
-                    <div class="scr-spacer"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section id="features">
-    <div class="container split reveal">
-        <div>
-            <span class="eyebrow">Journey</span>
-            <h2>One connected system</h2>
-            <ul class="points">
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Choose focus areas once</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Get personalized programs</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Daily missions worth XP</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Attributes climb as you act</span></li>
-            </ul>
-        </div>
-        <div class="split-visual">
-            <div class="phone-wrap">
-            <div class="phone" role="img" aria-label="Strive journey stages START, Foundation, Build with active program progress">
-                <div class="screen">
-                <div class="mock-top"><span class="mini-tile"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="mini-word">STRIVE</span></div>
-                <div class="rail">
-                    <span class="rail-track"></span>
-                    <div class="stop">
-                        <span class="stop-dot done"></span>
-                        <div class="stop-title">START</div>
-                    </div>
-                    <div class="stop">
-                        <span class="stop-dot cur"></span>
-                        <div class="stop-title">Foundation<span class="cur-chip">Current</span></div>
-                    </div>
-                    <div class="stop">
-                        <span class="stop-dot"></span>
-                        <div class="stop-title dim">Build</div>
-                    </div>
-                </div>
-                <div class="prog-rows">
-                    <div class="obar">
-                        <div class="obar-row"><span>Academic Comeback</span><em>38%</em></div>
-                        <div class="obar-track"><div class="obar-fill" style="width:38%"></div></div>
-                    </div>
-                    <div class="obar">
-                        <div class="obar-row"><span>Digital Reset</span><em>12%</em></div>
-                        <div class="obar-track"><div class="obar-fill" style="width:12%"></div></div>
-                    </div>
-                </div>
-                <div class="scr-spacer"></div>
-            </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="how">
-    <div class="container split flip reveal">
-        <div>
-            <span class="eyebrow">Coach</span>
-            <h2>A coach with your numbers</h2>
-            <ul class="points">
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Answers from your live stats</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Casual when you want to talk</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Plans for sleep, study and screen time</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Follow-up questions on any rating</span></li>
-            </ul>
-        </div>
-        <div class="split-visual">
-            <div class="phone-wrap">
-                <div class="phone" role="img" aria-label="Strive coach conversation preview about procrastination">
-                    <div class="screen">
-                        <div class="scr-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
-                        <div class="chat-screen" aria-label="Sample coach conversation">
-                            <div class="mock-top"><span class="mini-tile"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="mini-word">STRIVE</span></div>
-                            <div class="bubble user">why do I keep procrastinating?</div>
-                            <div class="bubble coach">Your academics XP is <b>0</b> this week while social media averaged <b>3h</b> daily. Move one study block before noon.</div>
-                            <div class="chat-input"><span>Ask your coach</span><span class="send-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span></div>
-                            <div class="scr-spacer"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="tools">
-    <div class="container split reveal">
-        <div>
-            <span class="eyebrow">Profile</span>
-            <h2>Progress you can see</h2>
-            <ul class="points">
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Attributes climb with every quest</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Earn titles like Committed and Finisher</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Ranks from Bronze up the ladder</span></li>
-                <li class="point-lg"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>Weekly review every Monday</span></li>
-            </ul>
-        </div>
-        <div class="split-visual">
-            <div class="phone-wrap">
-            <div class="phone" role="img" aria-label="Strive profile preview for Alex, Level 14 Gold I, attributes Confidence Lv8 and Academics Lv6, titles Committed and Finisher">
-                <div class="screen">
-                <div class="mock-top"><span class="mini-tile"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="mini-word">STRIVE</span></div>
-                <div class="pf-head">
-                    <span class="pf-avatar">A</span>
-                    <span class="pf-id">
-                        <span class="pf-name">Alex</span><br>
-                        <span class="pf-meta">Level 14 &middot; Gold I</span>
-                    </span>
-                </div>
-                <div class="pf-body">
-                    <div class="sec-label">ATTRIBUTES</div>
-                    <div class="obars">
-                        <div class="obar">
-                            <div class="obar-row"><span>Confidence</span><em>Lv8</em></div>
-                            <div class="obar-track"><div class="obar-fill" style="width:80%"></div></div>
-                        </div>
-                        <div class="obar">
-                            <div class="obar-row"><span>Academics</span><em>Lv6</em></div>
-                            <div class="obar-track"><div class="obar-fill" style="width:60%"></div></div>
-                        </div>
-                    </div>
-                    <div class="sec-label">TITLES</div>
-                    <div class="chips">
-                        <span class="title-chip p">Committed</span>
-                        <span class="title-chip g">Finisher</span>
-                    </div>
-                </div>
-                <div class="scr-spacer"></div>
-            </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer id="footer">
+<section class="hero">
     <div class="container">
-        <div class="foot-inner">
+        <div class="hero-grid">
+            <div class="hero-content fade-in">
+                <div class="hero-badge">
+                    <div class="hero-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <span>Level up your life</span>
+                </div>
+                <h1>Transform your student life into an epic journey</h1>
+                <p class="hero-subtitle">An RPG-style app with personalized programs, daily quests, XP tracking, and a real AI coach for better grades, confidence, fitness, and sleep.</p>
+
+                <ul class="hero-features">
+                    <li class="hero-feature">
+                        <span class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span>Programs that adapt to your goals</span>
+                    </li>
+                    <li class="hero-feature">
+                        <span class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span>Daily quests worth real XP and rewards</span>
+                    </li>
+                    <li class="hero-feature">
+                        <span class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span>AI coach that knows your live stats</span>
+                    </li>
+                    <li class="hero-feature">
+                        <span class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span>Track progress across all life areas</span>
+                    </li>
+                </ul>
+
+                <div class="hero-ctas">
+                    <a href="download/Strive-v52.apk" download class="btn btn-primary btn-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download APK
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-large">Explore Features</a>
+                </div>
+            </div>
+
+            <div class="phone-container fade-in">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="screen-content">
+                            <div class="status-bar">
+                                <span>9:41</span>
+                                <div class="status-indicators">
+                                    <span class="status-dot"></span>
+                                    <span class="status-dot"></span>
+                                    <span class="status-dot"></span>
+                                </div>
+                            </div>
+
+                            <div class="app-header">
+                                <div class="app-logo">
+                                    <div class="app-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5"/>
+                                        </svg>
+                                    </div>
+                                    <span class="app-title">STRIVE</span>
+                                </div>
+                                <div class="notification-btn">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                    </svg>
+                                    <span class="notification-badge"></span>
+                                </div>
+                            </div>
+
+                            <div class="greeting">
+                                <div class="greeting-text">Hi Alex 👋</div>
+                            </div>
+
+                            <div class="level-display">
+                                <div class="level-info">
+                                    <span class="level-number">Level 12</span>
+                                    <span class="rank-badge">Gold II</span>
+                                </div>
+                                <div class="xp-progress">
+                                    <div class="xp-label">
+                                        <span>XP to next level</span>
+                                        <span class="xp-label-value">65%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quests-section">
+                                <div class="quests-header">
+                                    <span class="quests-title">TODAY'S QUESTS</span>
+                                    <span class="quests-remaining">3 left</span>
+                                </div>
+                                <div class="quest-list">
+                                    <div class="quest-item">
+                                        <span class="quest-checkbox"></span>
+                                        <div class="quest-details">
+                                            <div class="quest-name">Deep study session</div>
+                                        </div>
+                                        <span class="quest-xp">+40 XP</span>
+                                    </div>
+                                    <div class="quest-item">
+                                        <span class="quest-checkbox"></span>
+                                        <div class="quest-details">
+                                            <div class="quest-name">Complete workout</div>
+                                        </div>
+                                        <span class="quest-xp">+30 XP</span>
+                                    </div>
+                                    <div class="quest-item">
+                                        <span class="quest-checkbox"></span>
+                                        <div class="quest-details">
+                                            <div class="quest-name">Start conversation</div>
+                                        </div>
+                                        <span class="quest-xp">+20 XP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-badge">Features</span>
+            <h2>Everything you need to level up</h2>
+            <p class="section-description">Strive combines gamification with real coaching to help you build better habits and achieve your goals.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <h3>Personalized Programs</h3>
+                <p class="feature-description">Choose your focus areas once and get tailored programs that adapt to your progress. From academic comebacks to fitness goals.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3>Daily Quest System</h3>
+                <p class="feature-description">Complete daily missions worth XP. Each quest is designed to move you closer to your goals while keeping you motivated.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                </div>
+                <h3>AI Coach</h3>
+                <p class="feature-description">Get personalized advice from a coach that knows your live stats. Ask anything about your progress, habits, or goals.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <h3>XP & Progression</h3>
+                <p class="feature-description">Earn XP, level up, and climb ranks from Bronze to Diamond. Watch your attributes grow as you complete quests and programs.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3>Live Stats Tracking</h3>
+                <p class="feature-description">Real-time insights into screen time, study sessions, sleep, and more. Your coach uses these stats to give you better advice.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <h3>Earn Titles & Badges</h3>
+                <p class="feature-description">Unlock achievements like "Committed," "Finisher," and "Champion" as you hit milestones and maintain streaks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="cta" class="cta-section">
+    <div class="container">
+        <div class="cta-card fade-in">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to level up?</h2>
+                <p class="cta-description">Download Strive now and start your journey. Transform your habits, track your progress, and achieve your goals with personalized coaching.</p>
+                <div class="cta-buttons">
+                    <a href="download/Strive-v52.apk" download class="btn btn-primary btn-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download APK (v51)
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
             <div>
-                <div class="foot-brand">
-                    <span class="brand-tile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+                <div class="footer-brand">
+                    <div class="brand-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 7.5c-.8-1.4-2.6-2-4.9-2C9.4 5.5 7 6.7 7 9c0 2.1 1.8 3 4.9 3.6 3.3.6 5.1 1.7 5.1 4.1 0 2.6-2.5 3.8-5.4 3.8-2.6 0-4.6-.9-5.6-2.5"/>
+                        </svg>
+                    </div>
                     <span class="brand-name">Strive</span>
                 </div>
-                <p class="foot-tag">Level up your life. Programs, quests and real coaching for students.</p>
+                <p class="footer-description">Level up your life. Programs, quests and real coaching for students who want better grades, confidence, fitness, sleep and style.</p>
             </div>
+
             <div>
-                <div class="foot-h">Explore</div>
-                <ul class="foot-links">
+                <div class="footer-title">Product</div>
+                <ul class="footer-links">
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#how">How it works</a></li>
-                    <li><a href="#footer">Privacy</a></li>
+                    <li><a href="#cta">Download</a></li>
+                    <li><a href="download/Strive-v52.apk" download>APK (v51)</a></li>
                 </ul>
             </div>
+
             <div>
-                <div class="foot-h">Get the app</div>
-                <ul class="foot-links">
-                    <li><a href="download/Strive-v51.apk" download>Download APK</a></li>
-                    <li><a href="#features">What&rsquo;s inside</a></li>
+                <div class="footer-title">Company</div>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#privacy">Privacy</a></li>
+                    <li><a href="#terms">Terms</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-title">Support</div>
+                <ul class="footer-links">
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </div>
         </div>
-        <div class="foot-bottom">
-            <span class="foot-copy">&copy; 2026 Strive</span>
+
+        <div class="footer-bottom">
+            <span class="footer-copyright">&copy; 2026 Strive. All rights reserved.</span>
         </div>
     </div>
 </footer>
 
 <script>
-document.documentElement.classList.add('js');
-(function(){
+(function() {
     'use strict';
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced || !('IntersectionObserver' in window)) {
-        document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-        return;
-    }
-    var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+    });
+
+    // Intersection Observer for fade-in animations
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(function(element) {
+            observer.observe(element);
         });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    } else {
+        // Fallback for browsers without IntersectionObserver or users who prefer reduced motion
+        document.querySelectorAll('.fade-in').forEach(function(element) {
+            element.classList.add('visible');
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offsetTop = target.offsetTop - 72;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 })();
 </script>
 
 </body>
 </html>
-
-
-
-
-
